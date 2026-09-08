@@ -8,7 +8,7 @@ cssclasses:
 ---
 # template-vault-general
 
-A template vault for Obsidian made with general-purpose SW DEV notetaking.
+A template vault for Obsidian made with general-purpose SW DEV notetaking in mind.
 
 > ## Vault setup
 > 
