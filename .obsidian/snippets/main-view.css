@@ -1,0 +1,16 @@
+:root,
+body {
+  /* Obsidian Core readable line width */
+  --file-line-width: 66rem;
+
+  /* Theme-specific line width variables (Things theme, Minimal, etc.) */
+  --line-width: 66rem;
+  --line-width-adaptive: var(--line-width);
+  --line-width-wide: calc(var(--line-width) + 12.5%);
+}
+
+/* Ensure width applies cleanly in both Live Preview / Source and Reading views */
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
+  max-width: var(--file-line-width);
+}

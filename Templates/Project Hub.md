@@ -1,0 +1,30 @@
+---
+banner: photo-1768597795859-828bb2b19915.jpg
+banner_position: 50
+repo:
+wiki:
+locally:
+parent: "[[Templates - HUB]]"
+cssclasses:
+  - cards
+---
+< Project overview / description >
+
+< Key environments / URLs / staging links >
+
+## Children
+```dataview
+TABLE WITHOUT ID 
+	file.link AS "Note"
+FROM ""
+WHERE contains(parent, this.file.link)
+SORT file.name ASC
+```
+
+## Repos
+
+- `[< RepoName >](< URL >) (< description >)`
+
+## Docs
+
+- `[< DocName >](< URL >) (< description >)`

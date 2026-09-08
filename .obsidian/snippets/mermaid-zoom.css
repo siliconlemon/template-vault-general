@@ -1,0 +1,365 @@
+/* ==========================================================================
+   Mermaid Zoom Plugin - Custom Styling Snippet
+   Matches custom mermaid theme (.obsidian/snippets/mermaid.css)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Dark Mode Adaptation
+   Obsidian natively applies invert(1) hue-rotate(180deg) to .mermaid in dark
+   mode, transforming the light lavender fills into dark purple insides and
+   dark blue borders into light lavender outlines with crisp light text.
+   -------------------------------------------------------------------------- */
+.mermaid-zoom-modal-wrapper svg {
+	overflow: visible !important;
+}
+
+.theme-dark .mermaid-zoom-modal-wrapper svg {
+	filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. Font weight across all diagram text
+   -------------------------------------------------------------------------- */
+.mermaid-zoom-modal-wrapper text,
+.mermaid-zoom-modal-wrapper tspan,
+.mermaid-zoom-modal-wrapper .label,
+.mermaid-zoom-modal-wrapper .nodeLabel,
+.mermaid-zoom-modal-wrapper .edgeLabel,
+.mermaid-zoom-modal-wrapper .edgeLabel span,
+.mermaid-zoom-modal-wrapper .actor,
+.mermaid-zoom-modal-wrapper .messageText,
+.mermaid-zoom-modal-wrapper .labelText,
+.mermaid-zoom-modal-wrapper .loopText,
+.mermaid-zoom-modal-wrapper .noteText,
+.mermaid-zoom-modal-wrapper .entityLabel,
+.mermaid-zoom-modal-wrapper .stateLabel,
+.mermaid-zoom-modal-wrapper .legend,
+.mermaid-zoom-modal-wrapper .pieTitleText,
+.mermaid-zoom-modal-wrapper .slice,
+.mermaid-zoom-modal-wrapper foreignObject,
+.mermaid-zoom-modal-wrapper foreignObject * {
+	font-weight: 500 !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. Subgraphs / Clusters
+   -------------------------------------------------------------------------- */
+.mermaid-zoom-modal-wrapper .cluster rect {
+	stroke-width: 2px !important;
+	stroke: #600099 !important;
+	fill: #bcb0e8 !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. Flowchart / State / ER Nodes & Shapes
+   -------------------------------------------------------------------------- */
+.mermaid-zoom-modal-wrapper .node rect,
+.mermaid-zoom-modal-wrapper .node polygon,
+.mermaid-zoom-modal-wrapper .node circle,
+.mermaid-zoom-modal-wrapper .node ellipse,
+.mermaid-zoom-modal-wrapper .node path,
+.mermaid-zoom-modal-wrapper .er .entityBox,
+.mermaid-zoom-modal-wrapper .er .attributeBoxOdd,
+.mermaid-zoom-modal-wrapper .er .attributeBoxEven,
+.mermaid-zoom-modal-wrapper .statediagram-state rect,
+.mermaid-zoom-modal-wrapper .state-start,
+.mermaid-zoom-modal-wrapper .state-end {
+	stroke-width: 2px !important;
+	stroke: #280cb6 !important;
+	fill: #bcb0e8 !important;
+}
+
+/* Hide empty Dagre dummy routing/spacer nodes inserted around edge labels */
+.mermaid-zoom-modal-wrapper .node:not(.state-start):not(.state-end):not(:has(foreignObject)):not(:has(text)):not(:has(circle)):not(:has(polygon)):not(:has(path)),
+.mermaid-zoom-modal-wrapper .node:empty:not(.state-start):not(.state-end):not(circle):not(polygon):not(path) {
+	display: none !important;
+	opacity: 0 !important;
+	fill: transparent !important;
+	stroke: transparent !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. Node and Shape Labels (Dark/High Contrast)
+   -------------------------------------------------------------------------- */
+.mermaid-zoom-modal-wrapper .nodeLabel,
+.mermaid-zoom-modal-wrapper .node text,
+.mermaid-zoom-modal-wrapper .node tspan,
+.mermaid-zoom-modal-wrapper .label text,
+.mermaid-zoom-modal-wrapper .er text,
+.mermaid-zoom-modal-wrapper .entityLabel,
+.mermaid-zoom-modal-wrapper .attributeBoxOdd text,
+.mermaid-zoom-modal-wrapper .attributeBoxEven text,
+.mermaid-zoom-modal-wrapper .stateLabel,
+.mermaid-zoom-modal-wrapper .statediagram-state text,
+.mermaid-zoom-modal-wrapper .statediagram-state tspan {
+	fill: #000000 !important;
+	color: #000000 !important;
+}
+
+/* Ensure foreignObject containers and labels do not clip text overflow */
+.mermaid-zoom-modal-wrapper foreignObject,
+.mermaid-zoom-modal-wrapper foreignObject > div,
+.mermaid-zoom-modal-wrapper .node .label,
+.mermaid-zoom-modal-wrapper .node foreignObject {
+	overflow: visible !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. Edge Labels & Paths
+   -------------------------------------------------------------------------- */
+.mermaid-zoom-modal-wrapper .edgeLabel {
+	color: #000000 !important;
+	background-color: transparent !important; /* Wipe Obsidian's default inner gray background */
+}
+
+/* Make SVG rect fully transparent to prevent double-background layers */
+.mermaid-zoom-modal-wrapper .edgeLabel rect {
+	fill: transparent !important;
+	opacity: 0 !important;
+}
+
+
+
+/* Hide artifact pill shapes from empty edge labels (often inserted at 0,0 by Mermaid) */
+.mermaid-zoom-modal-wrapper .edgeLabel foreignObject[width="0"],
+.mermaid-zoom-modal-wrapper .edgeLabel foreignObject[width^="0."],
+.mermaid-zoom-modal-wrapper .edgeLabel foreignObject:has(> div:empty),
+.mermaid-zoom-modal-wrapper .edgeLabel foreignObject:has(> div > span:empty:only-child) {
+	display: none !important;
+}
+
+/* HTML label wrapper styled as a cohesive block for multiline text */
+.mermaid-zoom-modal-wrapper .edgeLabel foreignObject > div {
+	background-color: #eae7ec99 !important;
+	padding: 3px 8px !important;
+	border-radius: 4px !important;
+	display: inline-block !important;
+}
+
+/* Reset inner elements to prevent fragmented line-by-line inline backgrounds */
+.mermaid-zoom-modal-wrapper .edgeLabel foreignObject > div * {
+	background-color: transparent !important;
+	padding: 0 !important;
+	overflow: visible !important;
+}
+
+.mermaid-zoom-modal-wrapper .edgePath path {
+	stroke: #000000 !important;
+	stroke-width: 2px !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. Sequence Diagrams
+   -------------------------------------------------------------------------- */
+.mermaid-zoom-modal-wrapper .actor {
+	stroke-width: 2px !important;
+	stroke: #280cb6 !important;
+	fill: #bcb0e8 !important;
+}
+
+/* Stick figure user / actor icon */
+.mermaid-zoom-modal-wrapper .actor-man line,
+.mermaid-zoom-modal-wrapper .actor-man circle,
+.mermaid-zoom-modal-wrapper .actor-man path {
+	stroke-width: 2px !important;
+	stroke: #280cb6 !important;
+}
+
+.mermaid-zoom-modal-wrapper .actor-man circle {
+	fill: #bcb0e8 !important;
+}
+
+.mermaid-zoom-modal-wrapper .note {
+	stroke-width: 2px !important;
+	stroke: #600099 !important;
+	fill: #bcb0e8 !important;
+}
+
+.mermaid-zoom-modal-wrapper .labelBox {
+	stroke-width: 2px !important;
+	stroke: #600099 !important;
+	fill: #f0e0fb !important;
+}
+
+.mermaid-zoom-modal-wrapper .actor-line,
+.mermaid-zoom-modal-wrapper .messageLine0,
+.mermaid-zoom-modal-wrapper .messageLine1 {
+	stroke: #000000 !important;
+	stroke-width: 2px !important;
+}
+
+.mermaid-zoom-modal-wrapper text.actor,
+.mermaid-zoom-modal-wrapper text.actor tspan,
+.mermaid-zoom-modal-wrapper .actor text,
+.mermaid-zoom-modal-wrapper .actor tspan,
+.mermaid-zoom-modal-wrapper .actor-man text,
+.mermaid-zoom-modal-wrapper .actor-man tspan,
+.mermaid-zoom-modal-wrapper .messageText,
+.mermaid-zoom-modal-wrapper .labelText,
+.mermaid-zoom-modal-wrapper .loopText,
+.mermaid-zoom-modal-wrapper .loopText tspan,
+.mermaid-zoom-modal-wrapper .noteText,
+.mermaid-zoom-modal-wrapper .noteText tspan {
+	stroke: none !important;
+	fill: #000000 !important;
+	color: #000000 !important;
+}
+
+/* Sequence numbers (autonumber bubbles) */
+.mermaid-zoom-modal-wrapper text.sequenceNumber,
+.mermaid-zoom-modal-wrapper text.sequenceNumber tspan,
+.mermaid-zoom-modal-wrapper .sequenceNumber text,
+.mermaid-zoom-modal-wrapper text[class*="sequenceNumber"],
+.mermaid-zoom-modal-wrapper .sequenceNumber {
+	stroke: none !important;
+	fill: #ffffff !important;
+	color: #ffffff !important;
+	font-weight: 400 !important;
+}
+
+.mermaid-zoom-modal-wrapper [id*="sequencenumber"] circle,
+.mermaid-zoom-modal-wrapper [id*="sequenceNumber"] circle,
+.mermaid-zoom-modal-wrapper marker[id$="-sequencenumber"] circle {
+	fill: #333333 !important;
+	stroke: #333333 !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. User Journey Diagrams
+   -------------------------------------------------------------------------- */
+.mermaid-zoom-modal-wrapper .face {
+	stroke-width: 2px !important;
+	stroke: #280cb6 !important;
+	fill: #bcb0e8 !important;
+}
+
+.mermaid-zoom-modal-wrapper .face ~ g circle {
+	fill: #333333 !important;
+	stroke: #333333 !important;
+}
+
+.mermaid-zoom-modal-wrapper .mouth {
+	stroke: #333333 !important;
+}
+
+.mermaid-zoom-modal-wrapper rect.task,
+.mermaid-zoom-modal-wrapper rect.journey-section {
+	stroke-width: 2px !important;
+	stroke: #280cb6 !important;
+	fill: #bcb0e8 !important;
+}
+
+.mermaid-zoom-modal-wrapper .task-line {
+	stroke: #000000 !important;
+	stroke-width: 2px !important;
+}
+
+.mermaid-zoom-modal-wrapper .task .label,
+.mermaid-zoom-modal-wrapper .journey-section .label,
+.mermaid-zoom-modal-wrapper text.task,
+.mermaid-zoom-modal-wrapper text.task tspan,
+.mermaid-zoom-modal-wrapper text.journey-section,
+.mermaid-zoom-modal-wrapper text.journey-section tspan,
+.mermaid-zoom-modal-wrapper .legend,
+.mermaid-zoom-modal-wrapper .legend tspan {
+	fill: #000000 !important;
+	color: #000000 !important;
+}
+
+/* --------------------------------------------------------------------------
+   9. Pie Charts
+   -------------------------------------------------------------------------- */
+.mermaid-zoom-modal-wrapper .pieOuterCircle {
+	stroke: #000000 !important;
+	stroke-width: 1px !important;
+}
+
+.mermaid-zoom-modal-wrapper .pieCircle {
+	stroke: #000000 !important;
+	stroke-width: 1.5px !important;
+}
+
+.mermaid-zoom-modal-wrapper .pieCircle:nth-last-of-type(10) { fill: #130557 !important; }
+.mermaid-zoom-modal-wrapper .pieCircle:nth-last-of-type(9)  { fill: #bcb0e8 !important; }
+.mermaid-zoom-modal-wrapper .pieCircle:nth-last-of-type(8)  { fill: #1a0986 !important; }
+.mermaid-zoom-modal-wrapper .pieCircle:nth-last-of-type(7)  { fill: #7f62da !important; }
+.mermaid-zoom-modal-wrapper .pieCircle:nth-last-of-type(6)  { fill: #260cb6 !important; }
+.mermaid-zoom-modal-wrapper .pieCircle:nth-last-of-type(5)  { fill: #643ecc !important; }
+.mermaid-zoom-modal-wrapper .pieCircle:nth-last-of-type(4)  { fill: #11046c !important; }
+.mermaid-zoom-modal-wrapper .pieCircle:nth-last-of-type(3)  { fill: #d2cbeb !important; }
+.mermaid-zoom-modal-wrapper .pieCircle:nth-last-of-type(2)  { fill: #3210c6 !important; }
+.mermaid-zoom-modal-wrapper .pieCircle:nth-last-of-type(1)  { fill: #957cde !important; }
+
+.mermaid-zoom-modal-wrapper .legend:nth-last-of-type(10) rect { fill: #130557 !important; stroke: #130557 !important; }
+.mermaid-zoom-modal-wrapper .legend:nth-last-of-type(9)  rect { fill: #bcb0e8 !important; stroke: #bcb0e8 !important; }
+.mermaid-zoom-modal-wrapper .legend:nth-last-of-type(8)  rect { fill: #1a0986 !important; stroke: #1a0986 !important; }
+.mermaid-zoom-modal-wrapper .legend:nth-last-of-type(7)  rect { fill: #7f62da !important; stroke: #7f62da !important; }
+.mermaid-zoom-modal-wrapper .legend:nth-last-of-type(6)  rect { fill: #260cb6 !important; stroke: #260cb6 !important; }
+.mermaid-zoom-modal-wrapper .legend:nth-last-of-type(5)  rect { fill: #643ecc !important; stroke: #643ecc !important; }
+.mermaid-zoom-modal-wrapper .legend:nth-last-of-type(4)  rect { fill: #11046c !important; stroke: #11046c !important; }
+.mermaid-zoom-modal-wrapper .legend:nth-last-of-type(3)  rect { fill: #d2cbeb !important; stroke: #d2cbeb !important; }
+.mermaid-zoom-modal-wrapper .legend:nth-last-of-type(2)  rect { fill: #3210c6 !important; stroke: #3210c6 !important; }
+.mermaid-zoom-modal-wrapper .legend:nth-last-of-type(1)  rect { fill: #957cde !important; stroke: #957cde !important; }
+
+.mermaid-zoom-modal-wrapper .pieTitleText,
+.mermaid-zoom-modal-wrapper .slice,
+.mermaid-zoom-modal-wrapper .legend text {
+	fill: #000000 !important;
+	color: #000000 !important;
+}
+
+/* --------------------------------------------------------------------------
+   10. Plugin UI Controls Styling (Buttons, Control Bar, Modal)
+   -------------------------------------------------------------------------- */
+/* Fullscreen trigger button on the note block */
+.mermaid-zoom-ready .mermaid-zoom-fullscreen-btn {
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+	opacity: 0.6;
+	transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.mermaid-zoom-ready:hover .mermaid-zoom-fullscreen-btn {
+	opacity: 0.9;
+}
+
+.mermaid-zoom-ready .mermaid-zoom-fullscreen-btn:hover {
+	opacity: 1;
+	background: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+
+/* Modal floating control bar */
+.mermaid-zoom-modal-controls {
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 8px;
+	padding: 4px 6px;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+	backdrop-filter: blur(8px);
+}
+
+/* Control buttons inside the modal */
+.mermaid-zoom-modal-controls .mermaid-zoom-icon-btn {
+	border-radius: 4px;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+
+.mermaid-zoom-modal-controls .mermaid-zoom-icon-btn:hover {
+	background: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+
+.mermaid-zoom-modal-controls .mermaid-zoom-icon-btn.mermaid-zoom-modal-close:hover {
+	background: var(--background-modifier-error);
+	color: var(--text-on-accent);
+}
+
+/* Scale indicator text */
+.mermaid-zoom-modal-controls .mermaid-zoom-scale {
+	font-weight: 500;
+	color: var(--text-muted);
+	padding: 0 4px;
+}

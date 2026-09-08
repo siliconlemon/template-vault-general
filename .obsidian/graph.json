@@ -1,0 +1,58 @@
+{
+  "collapse-filter": false,
+  "search": "-path:TaskNotes/Views -tag:hidden ",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "tag:#BUG  ",
+      "color": {
+        "a": 1,
+        "rgb": 14701138
+      }
+    },
+    {
+      "query": "tag:#CHORE  ",
+      "color": {
+        "a": 1,
+        "rgb": 14725458
+      }
+    },
+    {
+      "query": "tag:#FEAT  ",
+      "color": {
+        "a": 1,
+        "rgb": 7309026
+      }
+    },
+    {
+      "query": "tag:#REFACTOR  ",
+      "color": {
+        "a": 1,
+        "rgb": 14701249
+      }
+    },
+    {
+      "query": "file:HUB",
+      "color": {
+        "a": 1,
+        "rgb": 16777215
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 0.973544698544699,
+  "lineSizeMultiplier": 2.92946985446985,
+  "collapse-forces": false,
+  "centerStrength": 0.290540540540541,
+  "repelStrength": 8.13929313929314,
+  "linkStrength": 0.63981288981289,
+  "linkDistance": 161,
+  "scale": 1.4019829279462663,
+  "close": true
+}

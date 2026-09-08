@@ -1,0 +1,13 @@
+{
+  "enabledCssSnippets": [
+    "callout-padding",
+    "cards",
+    "links",
+    "mermaid",
+    "main-view",
+    "mermaid-zoom",
+    "tasks",
+    "text-size"
+  ],
+  "theme": "obsidian"
+}

@@ -1,0 +1,296 @@
+:root {
+	--mermaid-max-width: 36rem;
+}
+
+.mermaid svg {
+	max-width: min(100%, var(--mermaid-max-width));
+	height: auto;
+	overflow: visible !important;
+}
+
+/* Increase font weight across all diagram text for better antialiasing/contrast */
+.mermaid text,
+.mermaid tspan,
+.mermaid .label,
+.mermaid .nodeLabel,
+.mermaid .edgeLabel,
+.mermaid .edgeLabel span,
+.mermaid .actor,
+.mermaid .messageText,
+.mermaid .labelText,
+.mermaid .loopText,
+.mermaid .noteText,
+.mermaid .entityLabel,
+.mermaid .stateLabel,
+.mermaid .legend,
+.mermaid .pieTitleText,
+.mermaid .slice,
+.mermaid foreignObject,
+.mermaid foreignObject * {
+	font-weight: 500 !important;
+}
+
+.mermaid .cluster rect {
+	stroke-width: 2px !important;
+	stroke: #600099 !important;
+	fill: #bcb0e8 !important;
+}
+
+.mermaid .node rect,
+.mermaid .node polygon,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node path,
+.mermaid .er .entityBox,
+.mermaid .er .attributeBoxOdd,
+.mermaid .er .attributeBoxEven,
+.mermaid .statediagram-state rect,
+.mermaid .state-start,
+.mermaid .state-end {
+	stroke-width: 2px !important;
+	stroke: #280cb6 !important;
+	fill: #bcb0e8 !important;
+}
+
+/* Hide empty Dagre dummy routing/spacer nodes inserted around edge labels */
+.mermaid .node:not(.state-start):not(.state-end):not(:has(foreignObject)):not(:has(text)):not(:has(circle)):not(:has(polygon)):not(:has(path)),
+.mermaid .node:empty:not(.state-start):not(.state-end):not(circle):not(polygon):not(path) {
+	display: none !important;
+	opacity: 0 !important;
+	fill: transparent !important;
+	stroke: transparent !important;
+}
+
+/* Keep label text dark/high-contrast, matching the class diagram's text
+   (it must not be overridden by the shape fill color above). */
+.mermaid .nodeLabel,
+.mermaid .node text,
+.mermaid .node tspan,
+.mermaid .label text,
+.mermaid .er text,
+.mermaid .entityLabel,
+.mermaid .attributeBoxOdd text,
+.mermaid .attributeBoxEven text,
+.mermaid .stateLabel,
+.mermaid .statediagram-state text,
+.mermaid .statediagram-state tspan {
+	fill: #000000 !important;
+	color: #000000 !important;
+}
+
+/* Ensure foreignObject containers and labels do not clip text overflow */
+.mermaid foreignObject,
+.mermaid foreignObject > div,
+.mermaid .node .label,
+.mermaid .node foreignObject {
+	overflow: visible !important;
+}
+
+/* Hide artifact pill shapes from empty edge labels (often inserted at 0,0 by Mermaid) */
+.mermaid .edgeLabel foreignObject[width="0"],
+.mermaid .edgeLabel foreignObject[width^="0."],
+.mermaid .edgeLabel foreignObject:has(> div:empty),
+.mermaid .edgeLabel foreignObject:has(> div > span:empty:only-child) {
+	display: none !important;
+}
+
+/* Edge labels (messages / path annotations) */
+.mermaid .edgeLabel {
+	color: #000000 !important;
+	background-color: transparent !important; /* Wipe Obsidian's default inner gray background */
+}
+
+/* Make SVG rect fully transparent to prevent double-background layers */
+.mermaid .edgeLabel rect {
+	fill: transparent !important;
+	opacity: 0 !important;
+}
+
+
+
+/* HTML label wrapper styled as a cohesive block for multiline text */
+.mermaid .edgeLabel foreignObject > div {
+	background-color: #eae7ec99 !important;
+	padding: 3px 8px !important;
+	border-radius: 4px !important;
+	display: inline-block !important;
+}
+
+/* Reset inner elements to prevent fragmented line-by-line inline backgrounds */
+.mermaid .edgeLabel foreignObject > div * {
+	background-color: transparent !important;
+	padding: 0 !important;
+	overflow: visible !important;
+}
+
+.mermaid .edgePath path {
+	stroke: #000000 !important;
+	stroke-width: 2px !important;
+}
+
+/* Sequence diagrams */
+.mermaid .actor {
+	stroke-width: 2px !important;
+	stroke: #280cb6 !important;
+	fill: #bcb0e8 !important;
+}
+
+/* Stick figure user / actor icon */
+.mermaid .actor-man line,
+.mermaid .actor-man circle,
+.mermaid .actor-man path {
+	stroke-width: 2px !important;
+	stroke: #280cb6 !important;
+}
+
+.mermaid .actor-man circle {
+	fill: #bcb0e8 !important;
+}
+
+.mermaid .note {
+	stroke-width: 2px !important;
+	stroke: #600099 !important;
+	fill: #bcb0e8 !important;
+}
+
+.mermaid .labelBox {
+	stroke-width: 2px !important;
+	stroke: #600099 !important;
+	fill: #f0e0fb !important;
+}
+
+.mermaid .actor-line,
+.mermaid .messageLine0,
+.mermaid .messageLine1 {
+	stroke: #000000 !important;
+	stroke-width: 2px !important;
+}
+
+.mermaid text.actor,
+.mermaid text.actor tspan,
+.mermaid .actor text,
+.mermaid .actor tspan,
+.mermaid .actor-man text,
+.mermaid .actor-man tspan,
+.mermaid .messageText,
+.mermaid .labelText,
+.mermaid .loopText,
+.mermaid .loopText tspan,
+.mermaid .noteText,
+.mermaid .noteText tspan {
+	stroke: none !important;
+	fill: #000000 !important;
+	color: #000000 !important;
+}
+
+/* Sequence numbers (autonumber bubbles) */
+.mermaid text.sequenceNumber,
+.mermaid text.sequenceNumber tspan,
+.mermaid .sequenceNumber text,
+.mermaid text[class*="sequenceNumber"],
+.mermaid .sequenceNumber {
+	stroke: none !important;
+	fill: #ffffff !important;
+	color: #ffffff !important;
+	font-weight: 400 !important;
+}
+
+.mermaid [id*="sequencenumber"] circle,
+.mermaid [id*="sequenceNumber"] circle,
+.mermaid marker[id$="-sequencenumber"] circle {
+	fill: #333333 !important;
+	stroke: #333333 !important;
+}
+
+/* User journey diagrams. Note: mermaid reuses the same class on both the
+   task/section rect AND its label wrapper, so shapes must be tag-qualified
+   (rect.task, rect.journey-section) to avoid also recoloring the label.
+   Labels render as HTML (foreignObject > div.label), not SVG <text>, so
+   they need `color`, targeted via the nested .label div. */
+.mermaid .face {
+	stroke-width: 2px !important;
+	stroke: #280cb6 !important;
+	fill: #bcb0e8 !important;
+}
+
+.mermaid .face ~ g circle {
+	fill: #333333 !important;
+	stroke: #333333 !important;
+}
+
+.mermaid .mouth {
+	stroke: #333333 !important;
+}
+
+.mermaid rect.task,
+.mermaid rect.journey-section {
+	stroke-width: 2px !important;
+	stroke: #280cb6 !important;
+	fill: #bcb0e8 !important;
+}
+
+.mermaid .task-line {
+	stroke: #000000 !important;
+	stroke-width: 2px !important;
+}
+
+.mermaid .task .label,
+.mermaid .journey-section .label,
+.mermaid text.task,
+.mermaid text.task tspan,
+.mermaid text.journey-section,
+.mermaid text.journey-section tspan,
+.mermaid .legend,
+.mermaid .legend tspan {
+	fill: #000000 !important;
+	color: #000000 !important;
+}
+
+/* Pie charts. Each slice/legend swatch gets its fill set inline by mermaid
+   (via d3 .style(), which beats stylesheet rules without !important), so
+   slices are targeted positionally since there is no per-index class to
+   hook into. Counting from the end with :nth-last-of-type (instead of
+   :nth-of-type from the front) avoids having to guess how many unrelated
+   sibling elements - title, chart group, etc. - precede the slices/legend,
+   since both lists always end right where the group/svg ends, in the same
+   relative order. 9 hues spread evenly around the color wheel (40 degrees
+   apart), all at the same saturation/lightness as the node fill so the
+   first slice matches the node color (#cab0e8) used elsewhere. */
+.mermaid .pieOuterCircle {
+	stroke: #000000 !important;
+	stroke-width: 1px !important;
+}
+
+.mermaid .pieCircle {
+	stroke: #000000 !important;
+	stroke-width: 1.5px !important;
+}
+
+.mermaid .pieCircle:nth-last-of-type(10) { fill: #130557 !important; }
+.mermaid .pieCircle:nth-last-of-type(9)  { fill: #bcb0e8 !important; }
+.mermaid .pieCircle:nth-last-of-type(8)  { fill: #1a0986 !important; }
+.mermaid .pieCircle:nth-last-of-type(7)  { fill: #7f62da !important; }
+.mermaid .pieCircle:nth-last-of-type(6)  { fill: #260cb6 !important; }
+.mermaid .pieCircle:nth-last-of-type(5)  { fill: #643ecc !important; }
+.mermaid .pieCircle:nth-last-of-type(4)  { fill: #11046c !important; }
+.mermaid .pieCircle:nth-last-of-type(3)  { fill: #d2cbeb !important; }
+.mermaid .pieCircle:nth-last-of-type(2)  { fill: #3210c6 !important; }
+.mermaid .pieCircle:nth-last-of-type(1)  { fill: #957cde !important; }
+
+.mermaid .legend:nth-last-of-type(10) rect { fill: #130557 !important; stroke: #130557 !important; }
+.mermaid .legend:nth-last-of-type(9)  rect { fill: #bcb0e8 !important; stroke: #bcb0e8 !important; }
+.mermaid .legend:nth-last-of-type(8)  rect { fill: #1a0986 !important; stroke: #1a0986 !important; }
+.mermaid .legend:nth-last-of-type(7)  rect { fill: #7f62da !important; stroke: #7f62da !important; }
+.mermaid .legend:nth-last-of-type(6)  rect { fill: #260cb6 !important; stroke: #260cb6 !important; }
+.mermaid .legend:nth-last-of-type(5)  rect { fill: #643ecc !important; stroke: #643ecc !important; }
+.mermaid .legend:nth-last-of-type(4)  rect { fill: #11046c !important; stroke: #11046c !important; }
+.mermaid .legend:nth-last-of-type(3)  rect { fill: #d2cbeb !important; stroke: #d2cbeb !important; }
+.mermaid .legend:nth-last-of-type(2)  rect { fill: #3210c6 !important; stroke: #3210c6 !important; }
+.mermaid .legend:nth-last-of-type(1)  rect { fill: #957cde !important; stroke: #957cde !important; }
+
+.mermaid .pieTitleText,
+.mermaid .slice,
+.mermaid .legend text {
+	fill: #000000 !important;
+	color: #000000 !important;
+}

@@ -1,0 +1,29 @@
+:root {
+  --callout-padding-top: 16px;
+  --callout-padding-bottom: 4px;
+  --callout-padding-left: 16px;
+  --callout-padding-right: 16px;
+
+  --callout-title-padding-top: 2px;
+  --callout-title-padding-bottom: 0px;
+
+  --callout-content-padding-top: 0px;
+  --callout-content-padding-bottom: 0px;
+}
+
+.callout {
+  padding: var(--callout-padding-top)
+           var(--callout-padding-right)
+           var(--callout-padding-bottom)
+           var(--callout-padding-left);
+}
+
+.callout-title {
+  padding-top: var(--callout-title-padding-top);
+  padding-bottom: var(--callout-title-padding-bottom);
+}
+
+.callout-content {
+  padding-top: var(--callout-content-padding-top);
+  padding-bottom: var(--callout-content-padding-bottom);
+}

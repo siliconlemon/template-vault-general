@@ -1,0 +1,167 @@
+:root,
+body {
+  /* Base text size - slightly enlarged from standard 16px */
+  --font-text-size: 17px;
+  --font-adaptive-normal: 17px;
+
+  /* Note Title (Inline Title at the top of note) */
+  --inline-title-size: 1.85rem;
+
+  /* Headings (H1 - H6) */
+  --h1-size: 1.85rem;
+  --h2-size: 1.60rem;
+  --h3-size: 1.38rem;
+  --h4-size: 1.22rem;
+  --h5-size: 1.10rem;
+  --h6-size: 1.02rem;
+
+  /* Code blocks - preserved at standard readable size */
+  --code-size: 13.5px;
+
+  /* Inline code - optically matches the surrounding body text */
+  --inline-code-size: 0.88em;
+}
+
+/* ==========================================================================
+   1. Normal Text (Reading View & Live Preview)
+   ========================================================================== */
+
+/* Reading View */
+.markdown-rendered {
+  font-size: var(--font-text-size);
+}
+
+/* Live Preview & Source Mode */
+.markdown-source-view.mod-cm6 .cm-scroller {
+  font-size: var(--font-text-size);
+}
+.markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-header):not(.HyperMD-codeblock) {
+  font-size: var(--font-text-size);
+}
+
+/* ==========================================================================
+   2. Note Title & Headings (Reading View & Live Preview)
+   ========================================================================== */
+
+/* Note inline title */
+.inline-title,
+.markdown-rendered .inline-title,
+.mod-header .inline-title {
+  font-size: var(--inline-title-size) !important;
+}
+
+/* Reading View Headings */
+.markdown-rendered h1 { font-size: var(--h1-size) !important; }
+.markdown-rendered h2 { font-size: var(--h2-size) !important; }
+.markdown-rendered h3 { font-size: var(--h3-size) !important; }
+.markdown-rendered h4 { font-size: var(--h4-size) !important; }
+.markdown-rendered h5 { font-size: var(--h5-size) !important; }
+.markdown-rendered h6 { font-size: var(--h6-size) !important; }
+
+/* Live Preview Headings */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
+.markdown-source-view.mod-cm6 .HyperMD-header-1 {
+  font-size: var(--h1-size) !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
+.markdown-source-view.mod-cm6 .HyperMD-header-2 {
+  font-size: var(--h2-size) !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
+.markdown-source-view.mod-cm6 .HyperMD-header-3 {
+  font-size: var(--h3-size) !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
+.markdown-source-view.mod-cm6 .HyperMD-header-4 {
+  font-size: var(--h4-size) !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
+.markdown-source-view.mod-cm6 .HyperMD-header-5 {
+  font-size: var(--h5-size) !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6,
+.markdown-source-view.mod-cm6 .HyperMD-header-6 {
+  font-size: var(--h6-size) !important;
+}
+
+/* ==========================================================================
+   3. Code Blocks (Preserve standard code block size)
+   ========================================================================== */
+
+/* Reading View Code Blocks */
+.markdown-rendered pre,
+.markdown-rendered pre code,
+.markdown-preview-view pre,
+.markdown-preview-view pre code {
+  font-size: var(--code-size) !important;
+}
+
+/* Live Preview Code Blocks */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-bg,
+.markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget) {
+  font-size: var(--code-size) !important;
+}
+
+/* ==========================================================================
+   4. Inline Code (Naturally matches surrounding text & headings)
+   ========================================================================== */
+
+/* Reading View Inline Code */
+.markdown-rendered code:not(pre code),
+.markdown-preview-view code:not(pre code) {
+  font-size: var(--inline-code-size) !important;
+}
+
+/* Live Preview Inline Code */
+.cm-s-obsidian span.cm-inline-code,
+.markdown-source-view.mod-cm6 span.cm-inline-code,
+.markdown-source-view.mod-cm6 .cm-inline-code {
+  font-size: var(--inline-code-size) !important;
+}
+
+/* Inline code inside headings inherits heading proportions */
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) code:not(pre code),
+.markdown-source-view.mod-cm6 .HyperMD-header span.cm-inline-code {
+  font-size: 0.86em !important;
+}
+
+/* ==========================================================================
+   5. Tags in Normal Text (Reading View & Live Preview)
+   ========================================================================== */
+
+/* Reading View Tags */
+.markdown-rendered a.tag,
+.markdown-rendered .tag,
+.markdown-preview-view a.tag,
+.markdown-preview-view .tag {
+  font-size: 0.94em !important;
+  padding: 0.15em 0.55em !important;
+  border-radius: 4px !important;
+  line-height: 1.35 !important;
+}
+
+/* Live Preview Tags */
+.markdown-source-view.mod-cm6 .cm-hashtag,
+.markdown-source-view.mod-cm6 .cm-hashtag-begin,
+.markdown-source-view.mod-cm6 .cm-hashtag-end {
+  font-size: 0.94em !important;
+}
+
+/* ==========================================================================
+   6. Tags in Card Views (Dataview cards grid)
+   ========================================================================== */
+
+.cards table.dataview tbody > tr > td a.tag,
+.cards table.dataview tbody > tr > td .tag,
+.cards table.dataview .tag {
+  font-size: 0.86rem !important; /* ~14px readable badge */
+  padding: 3px 11px !important;
+  border-radius: 999px !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  font-weight: 500 !important;
+}
+

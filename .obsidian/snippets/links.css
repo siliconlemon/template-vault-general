@@ -1,0 +1,12 @@
+/* Reading View (Internal & External Links) */
+.markdown-rendered a.internal-link,
+.markdown-rendered a.external-link {
+    /* 500 (medium), 600 (semi-bold), 700 (bold) */
+    font-weight: 500;
+}
+
+/* Live Preview & Editing Mode */
+.cm-s-obsidian .cm-link,
+.cm-s-obsidian .cm-hmd-internal-link {
+    font-weight: 500;
+}
