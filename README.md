@@ -27,8 +27,16 @@ A template vault for Obsidian made with general-purpose SW DEV notetaking.
 
 > [!IMPORTANT] Plugins & CSS
 > If cards, badges, or code formatting look unexpected, make sure community plugins and CSS snippets are enabled:
-> - **Community Plugins:** `Dataview`, `Tasks`, `Contribution Graph`, `Shiki Highlighter`, `Style Settings`, `Pretty Properties`, `Colored Tags Wrangler`, `Homepage`, `Mononote`.
-> - **Mermaid zoom:** Click any Mermaid diagram to expand and zoom.
+> - **Community Plugins:** `Colored Tags Wrangler`, `Contribution Graph`, `Dataview`, `GitHub Sync`, `Homepage`, `Mermaid Zoom`, `Mononote`, `Pretty Properties`, `Shiki Highlighter`, `Style Settings`, `Tasks`
+> - **Custom CSS:**
+>   - `callout-padding` — **Callouts:** tightens top/bottom padding and margins for compact, clean boxes.
+>   - `cards` — **Card grids:** transforms Dataview query tables into responsive visual card grids (used with `cssclasses: cards` / `card`).
+>   - `links` — **Links:** sets medium font weight (500) for internal and external links across Reading and Live Preview.
+>   - `main-view` — **Layout:** expands readable line width (`66rem`) for comfortable wide-screen reading and editing.
+>   - `mermaid` — **Diagrams:** theme-matching colors, typography, and clean container borders for Mermaid charts.
+>   - `mermaid-zoom` — **Diagrams:** zoom/pan overlay controls and modal expansion when clicking diagrams.
+>   - `tasks` — **Task lists:** fixes vertical alignment between checkboxes, list items, and status tags.
+>   - `text-size` — **Typography:** harmonic sizing scale with 17px body font, proportional H1–H6 headings, and optically scaled inline code.
 
 ## Status tags
 
