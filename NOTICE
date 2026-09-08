@@ -1,0 +1,40 @@
+# NOTICE
+
+The vault content in this repository — notes, templates, `Tasks.md`, `README.md`, and
+the CSS snippets in `.obsidian/snippets/` — is licensed under the MIT License (see
+`LICENSE`).
+
+This repository also redistributes third-party work so the template runs out of the
+box. That work is **not** covered by this repository's MIT license; each item remains
+under its own license and copyright, held by its respective author.
+
+## Bundled community plugins (`.obsidian/plugins/`)
+
+| Plugin | Author |
+| ------ | ------ |
+| Colored Tags Wrangler | [AnnaSasDev](https://github.com/AnnaSasDev) |
+| Contribution Graph | [vran](https://github.com/vran-dev) |
+| Dataview | [Michael Brenan](https://github.com/blacksmithgu) |
+| GitHub Sync | [Kevin Chin](https://kevin.gd/) |
+| Homepage | [novov](https://novov.me) |
+| Mermaid Zoom | [Wang Xiao Zhuang](https://github.com/xiaozhuang0433) |
+| Mononote | [Carlo Zottmann](https://github.com/czottmann) |
+| Pretty Properties | [Anareaty](https://github.com/anareaty) |
+| Shiki Highlighter | [Moritz Jung](https://www.moritzjung.dev) |
+| Style Settings | [mgmeyers](https://github.com/mgmeyers/obsidian-style-settings) |
+| Tasks | [Clare Macrae and Ilyas Landikov, created by Martin Schenck](https://github.com/obsidian-tasks-group) |
+
+Refer to each plugin's upstream repository for its license terms. If you prefer to
+install these yourself, delete `.obsidian/plugins/` and install them from
+**Settings → Community plugins → Browse**.
+
+## Bundled theme (`.obsidian/themes/`)
+
+- **Things** by [@colineckert](https://twitter.com/colineckert) —
+  <https://github.com/colineckert/obsidian-things>
+
+## Images (`Pictures/`)
+
+The banner and sample images are sourced from [Unsplash](https://unsplash.com) and are
+used under the [Unsplash License](https://unsplash.com/license). See
+`Pictures/CREDITS.md` for the individual photos.
