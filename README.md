@@ -48,7 +48,7 @@ Each child or issue note uses status tags to indicate state and surface in card 
 
 ---
 
-# Hubs
+## Hubs
 
 Each HUB file in the vault has its own folder and a bookmark for quick navigation.
 ```dataview
@@ -59,7 +59,7 @@ WHERE contains(file.name, "HUB")
 SORT file.name ASC
 ```
 
-# Recent notes
+## Recent notes
 
 12 most recently edited notes.
 ```dataview
@@ -73,7 +73,7 @@ SORT file.mtime DESC
 LIMIT 12
 ```
 
-# Activity
+## Activity
 
 Activity over the last 180 days.
 
