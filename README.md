@@ -103,8 +103,7 @@ cellStyleRules: []
 
 ## License
 
-Vault content (notes, templates, and CSS snippets) is licensed under the
-[MIT License](LICENSE).
+Vault content (notes, templates, and CSS snippets) is licensed under the [MIT License](LICENSE).
 
-Bundled community plugins, the `Things` theme, and the images in `Pictures/` are
-third-party work under their own licenses. See [NOTICE](NOTICE) for attribution.
+Bundled community plugins, the `Things` theme, and the images in `Pictures/` are third-party work under their own licenses. 
+See [NOTICE](NOTICE) for attribution.
