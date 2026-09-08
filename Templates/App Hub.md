@@ -1,11 +1,10 @@
 ---
 banner: photo-1657056852174-4d0e8a3f61ac.jpg
-banner_position: 54
-repo:
-wiki:
-locally:
-tags:
 parent: "[[Templates - HUB]]"
+tags:
+wiki:
+repo:
+locally:
 cssclasses:
   - cards
 ---

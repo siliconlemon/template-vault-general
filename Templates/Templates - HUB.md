@@ -1,6 +1,5 @@
 ---
 banner: photo-1768597795859-828bb2b19915.jpg
-banner_position: 31
 cssclasses:
   - cards
 ---

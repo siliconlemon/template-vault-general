@@ -1,12 +1,12 @@
 ---
-wiki:
+parent: "[[Templates - HUB]]"
 tags:
   - BUG
   - iOS
   - Android
   - Open
   - Closed
-parent: "[[Templates - HUB]]"
+wiki:
 ---
 ## Expected behavior
 

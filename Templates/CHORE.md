@@ -1,12 +1,12 @@
 ---
-wiki:
+parent: "[[Templates - HUB]]"
 tags:
   - CHORE
   - iOS
   - Android
   - Open
   - Closed
-parent: "[[Templates - HUB]]"
+wiki:
 ---
 ## Motivation
 
