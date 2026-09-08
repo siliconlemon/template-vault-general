@@ -1,0 +1,29 @@
+# Normalize line endings: store LF in the repo, check out native on Windows.
+* text=auto
+
+# Markdown notes and vault config
+*.md      text eol=lf
+*.json    text eol=lf
+*.css     text eol=lf
+*.js      text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+LICENSE   text eol=lf
+NOTICE    text eol=lf
+
+# Binary assets
+*.jpg     binary
+*.jpeg    binary
+*.png     binary
+*.gif     binary
+*.webp    binary
+*.svg     text eol=lf
+*.woff    binary
+*.woff2   binary
+*.ttf     binary
+*.otf     binary
+*.pdf     binary
+
+# Keep vendored plugin bundles out of diffs and language stats
+.obsidian/plugins/** linguist-vendored
+.obsidian/themes/**  linguist-vendored
