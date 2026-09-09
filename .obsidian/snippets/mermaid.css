@@ -2,6 +2,15 @@
 	--mermaid-max-width: 36rem;
 }
 
+.mermaid,
+.mermaid svg,
+.mermaid-zoom-modal-wrapper {
+	--bold-color: inherit;
+	--italic-color: inherit;
+	--strong-color: inherit;
+	--em-color: inherit;
+}
+
 .mermaid svg {
 	max-width: min(100%, var(--mermaid-max-width));
 	height: auto;
@@ -28,6 +37,69 @@
 .mermaid foreignObject,
 .mermaid foreignObject * {
 	font-weight: 500 !important;
+}
+
+/* Ensure bold and italic text retain their proper font-weight/style and keep their
+   original diagram text color (preventing theme accents like violet from overriding them) */
+:is(body, body.theme-light, body.theme-dark, body:not(.default-font-color)) :is(.mermaid, .mermaid-zoom-modal-wrapper, [class*="block-language-mermaid"]) :is(strong, b),
+:is(body, body.theme-light, body.theme-dark, body:not(.default-font-color)) :is(.mermaid, .mermaid-zoom-modal-wrapper, [class*="block-language-mermaid"]) :is(strong, b) * {
+	font-weight: 700 !important;
+	color: inherit !important;
+	fill: currentColor !important;
+}
+
+:is(body, body.theme-light, body.theme-dark, body:not(.default-font-color)) :is(.mermaid, .mermaid-zoom-modal-wrapper, [class*="block-language-mermaid"]) :is(em, i),
+:is(body, body.theme-light, body.theme-dark, body:not(.default-font-color)) :is(.mermaid, .mermaid-zoom-modal-wrapper, [class*="block-language-mermaid"]) :is(em, i) * {
+	font-style: italic !important;
+	color: inherit !important;
+	fill: currentColor !important;
+}
+
+:is(body, body.theme-light, body.theme-dark, body:not(.default-font-color)) :is(.mermaid, .mermaid-zoom-modal-wrapper, [class*="block-language-mermaid"]) :is(strong em, em strong, b i, i b),
+:is(body, body.theme-light, body.theme-dark, body:not(.default-font-color)) :is(.mermaid, .mermaid-zoom-modal-wrapper, [class*="block-language-mermaid"]) :is(strong em, em strong, b i, i b) * {
+	font-weight: 700 !important;
+	font-style: italic !important;
+	color: inherit !important;
+	fill: currentColor !important;
+}
+
+:is(.mermaid, .mermaid-zoom-modal-wrapper) text:is([font-weight="bold"], [font-weight="700"], .text-bold),
+:is(.mermaid, .mermaid-zoom-modal-wrapper) tspan:is([font-weight="bold"], [font-weight="700"], .text-bold) {
+	font-weight: 700 !important;
+	color: inherit !important;
+	fill: currentColor !important;
+}
+
+:is(.mermaid, .mermaid-zoom-modal-wrapper) text:is([font-style="italic"], .text-italic),
+:is(.mermaid, .mermaid-zoom-modal-wrapper) tspan:is([font-style="italic"], .text-italic) {
+	font-style: italic !important;
+	color: inherit !important;
+	fill: currentColor !important;
+}
+
+/* Ensure code snippets (inline and multiline blocks) have a subtle gray background */
+:is(body, body *) :is(.mermaid, .mermaid-zoom-modal-wrapper, [class*="block-language-mermaid"]) :is(code, pre) {
+	background-color: #f2f1f366 !important;
+	color: inherit !important;
+	font-family: var(--font-monospace) !important;
+	font-size: var(--inline-code-size, 0.88em) !important;
+	border: 1px solid rgba(0, 0, 0, 0.08) !important;
+	border-radius: 4px !important;
+	padding: 0.12em 0.38em !important;
+}
+
+:is(body, body *) :is(.mermaid, .mermaid-zoom-modal-wrapper, [class*="block-language-mermaid"]) pre {
+	display: block !important;
+	padding: 0.4em 0.6em !important;
+	margin: 0.25em 0 !important;
+	overflow-x: auto !important;
+}
+
+:is(body, body *) :is(.mermaid, .mermaid-zoom-modal-wrapper, [class*="block-language-mermaid"]) pre code {
+	background-color: transparent !important;
+	border: none !important;
+	padding: 0 !important;
+	font-size: inherit !important;
 }
 
 .mermaid .cluster rect {
@@ -114,12 +186,18 @@
 	padding: 3px 8px !important;
 	border-radius: 4px !important;
 	display: inline-block !important;
+	max-width: none !important;
+	width: max-content !important;
+	text-align: center !important;
+	box-sizing: border-box !important;
 }
 
 /* Reset inner elements to prevent fragmented line-by-line inline backgrounds */
-.mermaid .edgeLabel foreignObject > div * {
+.mermaid .edgeLabel foreignObject > div *:not(code):not(pre) {
 	background-color: transparent !important;
 	padding: 0 !important;
+	margin: 0 !important;
+	text-align: center !important;
 	overflow: visible !important;
 }
 
