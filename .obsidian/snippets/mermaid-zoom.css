@@ -9,6 +9,13 @@
    mode, transforming the light lavender fills into dark purple insides and
    dark blue borders into light lavender outlines with crisp light text.
    -------------------------------------------------------------------------- */
+.mermaid-zoom-modal-wrapper {
+	--bold-color: inherit;
+	--italic-color: inherit;
+	--strong-color: inherit;
+	--em-color: inherit;
+}
+
 .mermaid-zoom-modal-wrapper svg {
 	overflow: visible !important;
 }
@@ -39,6 +46,72 @@
 .mermaid-zoom-modal-wrapper foreignObject,
 .mermaid-zoom-modal-wrapper foreignObject * {
 	font-weight: 500 !important;
+}
+
+/* --------------------------------------------------------------------------
+   2b. Bold & Italic Text (Color & Weight Inheritance)
+   -------------------------------------------------------------------------- */
+:is(body, body.theme-light, body.theme-dark, body:not(.default-font-color)) .mermaid-zoom-modal-wrapper :is(strong, b),
+:is(body, body.theme-light, body.theme-dark, body:not(.default-font-color)) .mermaid-zoom-modal-wrapper :is(strong, b) * {
+	font-weight: 700 !important;
+	color: inherit !important;
+	fill: currentColor !important;
+}
+
+:is(body, body.theme-light, body.theme-dark, body:not(.default-font-color)) .mermaid-zoom-modal-wrapper :is(em, i),
+:is(body, body.theme-light, body.theme-dark, body:not(.default-font-color)) .mermaid-zoom-modal-wrapper :is(em, i) * {
+	font-style: italic !important;
+	color: inherit !important;
+	fill: currentColor !important;
+}
+
+:is(body, body.theme-light, body.theme-dark, body:not(.default-font-color)) .mermaid-zoom-modal-wrapper :is(strong em, em strong, b i, i b),
+:is(body, body.theme-light, body.theme-dark, body:not(.default-font-color)) .mermaid-zoom-modal-wrapper :is(strong em, em strong, b i, i b) * {
+	font-weight: 700 !important;
+	font-style: italic !important;
+	color: inherit !important;
+	fill: currentColor !important;
+}
+
+.mermaid-zoom-modal-wrapper text:is([font-weight="bold"], [font-weight="700"], .text-bold),
+.mermaid-zoom-modal-wrapper tspan:is([font-weight="bold"], [font-weight="700"], .text-bold) {
+	font-weight: 700 !important;
+	color: inherit !important;
+	fill: currentColor !important;
+}
+
+.mermaid-zoom-modal-wrapper text:is([font-style="italic"], .text-italic),
+.mermaid-zoom-modal-wrapper tspan:is([font-style="italic"], .text-italic) {
+	font-style: italic !important;
+	color: inherit !important;
+	fill: currentColor !important;
+}
+
+/* --------------------------------------------------------------------------
+   2c. Code Snippets (Subtle Gray Background & Monospace Font)
+   -------------------------------------------------------------------------- */
+:is(body, body *) .mermaid-zoom-modal-wrapper :is(code, pre) {
+	background-color: #f2f1f366 !important;
+	color: inherit !important;
+	font-family: var(--font-monospace) !important;
+	font-size: var(--inline-code-size, 0.88em) !important;
+	border: 1px solid rgba(0, 0, 0, 0.08) !important;
+	border-radius: 4px !important;
+	padding: 0.12em 0.38em !important;
+}
+
+:is(body, body *) .mermaid-zoom-modal-wrapper pre {
+	display: block !important;
+	padding: 0.4em 0.6em !important;
+	margin: 0.25em 0 !important;
+	overflow-x: auto !important;
+}
+
+:is(body, body *) .mermaid-zoom-modal-wrapper pre code {
+	background-color: transparent !important;
+	border: none !important;
+	padding: 0 !important;
+	font-size: inherit !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -134,12 +207,18 @@
 	padding: 3px 8px !important;
 	border-radius: 4px !important;
 	display: inline-block !important;
+	max-width: none !important;
+	width: max-content !important;
+	text-align: center !important;
+	box-sizing: border-box !important;
 }
 
 /* Reset inner elements to prevent fragmented line-by-line inline backgrounds */
-.mermaid-zoom-modal-wrapper .edgeLabel foreignObject > div * {
+.mermaid-zoom-modal-wrapper .edgeLabel foreignObject > div *:not(code):not(pre) {
 	background-color: transparent !important;
 	padding: 0 !important;
+	margin: 0 !important;
+	text-align: center !important;
 	overflow: visible !important;
 }
 
