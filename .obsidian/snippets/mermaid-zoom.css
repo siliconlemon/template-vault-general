@@ -345,6 +345,12 @@
 	color: #000000 !important;
 }
 
+.mermaid-zoom-modal-wrapper text[font-size="4ex"] {
+	fill: #000000 !important;
+	color: #000000 !important;
+	font-size: 25px !important;
+}
+
 /* --------------------------------------------------------------------------
    9. Pie Charts
    -------------------------------------------------------------------------- */

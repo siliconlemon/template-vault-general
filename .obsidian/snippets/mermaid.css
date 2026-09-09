@@ -324,6 +324,12 @@
 	color: #000000 !important;
 }
 
+.mermaid text[font-size="4ex"] {
+	fill: #000000 !important;
+	color: #000000 !important;
+	font-size: 25px !important;
+}
+
 /* Pie charts. Each slice/legend swatch gets its fill set inline by mermaid
    (via d3 .style(), which beats stylesheet rules without !important), so
    slices are targeted positionally since there is no per-index class to
