@@ -1,11 +1,23 @@
 :root {
-	--mermaid-max-width: 36rem;
+	/* Size diagrams by HEIGHT, not width. A fixed width cap shrinks wide
+	   (LR) flowcharts in both dimensions until they are an unreadable strip;
+	   a height cap tames tall/large diagrams while wide ones use the full
+	   note width. Diagrams are never upscaled past their natural size. */
+	--mermaid-max-width: 100%;
+	--mermaid-max-height: 36rem;
 }
 
 .mermaid svg {
-	max-width: min(100%, var(--mermaid-max-width));
-	height: auto;
 	overflow: visible !important;
+}
+
+/* Skipped while the mermaid-zoom plugin is inline-zooming (it sizes the svg
+   itself via inline styles and needs the caps out of the way). */
+.mermaid:not(.mermaid-zoom-scaled) > svg {
+	width: auto;
+	height: auto;
+	max-width: min(100%, var(--mermaid-max-width));
+	max-height: var(--mermaid-max-height);
 }
 
 /* Increase font weight across all diagram text for better antialiasing/contrast */
