@@ -311,6 +311,13 @@
 /* --------------------------------------------------------------------------
    10. Plugin UI Controls Styling (Buttons, Control Bar, Modal)
    -------------------------------------------------------------------------- */
+/* Reserve room for the inline control bar (26px buttons, 8px offset) so it
+   never overlaps short/wide diagrams, and give tiny blocks a sane floor. */
+.mermaid.mermaid-zoom-ready {
+	padding-bottom: 42px;
+	min-height: 6rem;
+}
+
 /* Fullscreen trigger button on the note block */
 .mermaid-zoom-ready .mermaid-zoom-fullscreen-btn {
 	background: var(--background-secondary);
