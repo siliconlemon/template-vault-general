@@ -25,6 +25,12 @@ cssclasses:
 > [!QUESTION] Question title
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
+> [!SUCCESS] Success title
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+> [!FAILURE] Failure title
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
 ## Footnotes
 
 Here goes foot note one[^1]. And this references footnote two[^2].
