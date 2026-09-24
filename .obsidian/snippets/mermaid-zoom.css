@@ -455,3 +455,54 @@
 	color: var(--text-muted);
 	padding: 0 4px;
 }
+
+/* --------------------------------------------------------------------------
+   11. XY Charts (xychart-beta)
+   -------------------------------------------------------------------------- */
+/* XY charts (xychart-beta). Mermaid paints a solid backgroundColor rect
+   behind the whole chart (white in light mode, black in dark mode) instead
+   of leaving it transparent like every other diagram type, and its default
+   bar/line plot palette is far too washed-out to read against that. Drop
+   the forced background so the note's own background shows through (same
+   as flowcharts/pie charts having no backing box), and recolor the plots
+   with the same violet palette used for nodes elsewhere (bars borderless,
+   lines keep their stroke) so they stay legible in both light and dark
+   mode. Axis/title/legend text is left
+   alone: Mermaid already picks a theme-aware contrasting color for those
+   (they sit directly on the page background, not on a fixed-color shape),
+   and it renders fine in both modes as-is. */
+.mermaid-zoom-modal-wrapper .background {
+	fill: transparent !important;
+}
+
+.mermaid-zoom-modal-wrapper g.plot rect {
+	stroke: none !important;
+	fill: #bcb0e8 !important;
+}
+
+.mermaid-zoom-modal-wrapper g.plot path {
+	stroke: #280cb6 !important;
+	stroke-width: 2px !important;
+	fill: none !important;
+}
+
+/* Give additional series distinct hues from the same violet palette used
+   for pie slices, so multi-series bar/line charts stay distinguishable.
+   Bars stay borderless (stroke: none); lines still need their stroke since
+   the stroke IS the line, not a border around a fill. */
+.mermaid-zoom-modal-wrapper g[class^="bar-plot-"]:nth-of-type(2) rect { fill: #d2cbeb !important; }
+.mermaid-zoom-modal-wrapper g[class^="line-plot-"]:nth-of-type(2) path { stroke: #600099 !important; }
+.mermaid-zoom-modal-wrapper g[class^="bar-plot-"]:nth-of-type(3) rect { fill: #957cde !important; }
+.mermaid-zoom-modal-wrapper g[class^="line-plot-"]:nth-of-type(3) path { stroke: #11046c !important; }
+.mermaid-zoom-modal-wrapper g[class^="bar-plot-"]:nth-of-type(4) rect { fill: #7f62da !important; }
+.mermaid-zoom-modal-wrapper g[class^="line-plot-"]:nth-of-type(4) path { stroke: #1a0986 !important; }
+
+.mermaid-zoom-modal-wrapper g.legend g.markers rect {
+	stroke: none !important;
+	fill: #bcb0e8 !important;
+}
+
+.mermaid-zoom-modal-wrapper g.legend g.markers path {
+	stroke: #280cb6 !important;
+	stroke-width: 2px !important;
+}
