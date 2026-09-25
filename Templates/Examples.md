@@ -191,6 +191,18 @@ pie title Traffic
     "Tablet" : 20
 ```
 
+### XY chart - trend or comparison across categories
+
+- Gateway ping stays low at idle and spikes hardest during calls.
+
+```mermaid
+xychart-beta
+    title "Gateway ping (ms) - idle vs. in-call"
+    x-axis ["idle avg", "idle max", "call avg", "call max"]
+    y-axis "ms" 0 --> 50
+    bar [2.6, 29, 8, 47]
+```
+
 ## Children as list
 ```dataview
 LIST
