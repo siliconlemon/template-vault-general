@@ -7,12 +7,17 @@ https://github.com/sponsors/kepano
 */
 
 .cards table.dataview > tbody > tr {
-  background-color: var(--background-secondary) !important;
+  background-color: var(--background-primary) !important;
+}
+
+/* Text-only first cell (e.g. a position number) - top spacing matches the side inset */
+.cards table.dataview.table-view-table > tbody.table-view-tbody > tr > td:first-child:not(:has(*)) {
+  padding-top: calc(var(--cards-padding)/2) !important;
 }
 
 :root {
-  --cards-min-width: 260px;
-  --cards-max-width: 1fr;
+  --cards-min-width: 180px;
+  --cards-max-width: 260px;
   --cards-mobile-width: 120px;
   --cards-image-height: 400px;
   --cards-padding: 1.2em;
@@ -50,13 +55,7 @@ https://github.com/sponsors/kepano
   border: var(--cards-border-width) solid var(--background-modifier-border-hover);
   box-shadow: 0 4px 6px 0px rgba(0, 0, 0, 0.05), 0 1px 3px 1px rgba(0, 0, 0, 0.025);
   transition: box-shadow 0.15s linear; }
-.cards table.dataview tbody > tr > td {
-  /* Paragraphs */
-  /* Links */
-  /* Buttons */
-  /* Lists */
-  /* Images */ }
-  .cards table.dataview tbody > tr > td:first-child {
+.cards table.dataview tbody > tr > td:first-child {
     font-weight: var(--bold-weight); }
   .cards table.dataview tbody > tr > td:first-child a {
     padding: 0 0 calc(var(--cards-padding)/3);
@@ -2443,3 +2442,19 @@ settings:
 		default-light: '#'
 		default-dark: '#'
 */
+
+/* Count badge for headings above a dataview cards table, e.g.
+### [[MODULES]] `$= dv.pages('""').where(p => p.parent && p.parent.toString().includes("MODULES")).length` */
+h1 .dataview-inline-query,
+h2 .dataview-inline-query,
+h3 .dataview-inline-query,
+h4 .dataview-inline-query {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0.05em 0.6em;
+  border-radius: 999px;
+  background-color: var(--background-modifier-border);
+  color: var(--text-muted);
+  font-size: 0.7em;
+  font-weight: 600;
+  vertical-align: middle; }
