@@ -1,0 +1,112 @@
+/* Wide cards, two per row - standalone, doesn't need the `cards` snippet:
+cssclasses:
+  - cards-column
+*/
+
+.cards-column {
+  --cc-max-width: 420px;
+  --cc-padding: 1.2em;
+  --cc-border-width: 2px;
+  --cc-columns: repeat(2, minmax(0, var(--cc-max-width)));
+}
+
+/* Narrow screens fall back to one card per row */
+@media (max-width: 400pt) {
+  .cards-column {
+    --cc-columns: minmax(0, 1fr);
+  }
+}
+
+/* Grid */
+.cards-column table.dataview.table-view-table > thead {
+  display: none;
+}
+
+.cards-column table.dataview.table-view-table > tbody {
+  display: grid;
+  grid-template-columns: var(--cc-columns);
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+/* Card */
+.cards-column table.dataview.table-view-table > tbody > tr {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--cc-max-width);
+  margin: 0;
+  padding: 0 0 calc(var(--cc-padding)/3) 0;
+  background-color: var(--background-primary) !important;
+  border: var(--cc-border-width) solid var(--background-modifier-border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: box-shadow 0.15s linear;
+}
+
+.cards-column table.dataview.table-view-table > tbody > tr:hover {
+  border-color: var(--background-modifier-border-hover);
+  box-shadow: 0 4px 6px 0px rgba(0, 0, 0, 0.05), 0 1px 3px 1px rgba(0, 0, 0, 0.025);
+}
+
+/* Cells */
+.cards-column table.dataview.table-view-table > tbody > tr > td {
+  display: flex;
+  width: calc(100% - var(--cc-padding));
+  max-width: 100%;
+  min-width: 0 !important;
+  margin: 0 auto;
+  padding: 0 !important;
+  border: none;
+  line-height: 1.2;
+  white-space: normal;
+  overflow: visible !important;
+}
+
+.cards-column table.dataview.table-view-table > tbody > tr > td > * {
+  padding: calc(var(--cc-padding)/3) 0;
+}
+
+.cards-column table.dataview.table-view-table > tbody > tr > td:first-child {
+  font-weight: var(--bold-weight);
+}
+
+.cards-column table.dataview.table-view-table > tbody > tr > td:not(:first-child) {
+  font-size: 90%;
+  color: var(--text-muted);
+}
+
+.cards-column table.dataview.table-view-table > tbody > tr > td a {
+  text-decoration: none;
+}
+
+.cards-column table.dataview.table-view-table > tbody > tr > td img {
+  width: 100%;
+  object-fit: contain;
+}
+
+/* Text-only first cell (e.g. a position number) sits left of the title, other cells stack beside it */
+.cards-column table.dataview.table-view-table > tbody > tr:not(:has(> td:first-child a, > td:first-child img)) {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: calc(var(--cc-padding)*0.75);
+  padding: calc(var(--cc-padding)/6) calc(var(--cc-padding)/2) calc(var(--cc-padding)/3);
+}
+
+.cards-column table.dataview.table-view-table > tbody > tr:not(:has(> td:first-child a, > td:first-child img)) > td {
+  grid-column: 2;
+  width: auto;
+  margin: 0;
+}
+
+/* Top padding matches the title's so both share a baseline */
+.cards-column table.dataview.table-view-table > tbody > tr:not(:has(> td:first-child a, > td:first-child img)) > td:first-child {
+  grid-column: 1;
+  grid-row: 1;
+  padding-top: calc(var(--cc-padding)/3) !important;
+}
+
+@media (max-width: 400pt) {
+  .cards-column table.dataview.table-view-table > tbody > tr > td:not(:first-child) {
+    font-size: 80%;
+  }
+}
