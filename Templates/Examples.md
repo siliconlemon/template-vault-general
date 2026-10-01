@@ -236,3 +236,36 @@ SORT file.name ASC
 
 *Add `cssclasses: [cards]` to the note's frontmatter for this to render as a card grid.*
 *Can be accompanied by `csssclasses: [card]` to adjust the look of HUB notes and make the cards pop more.*
+
+## Ordered cards
+
+- Notes chained through `previous` / `next` properties, numbered by the number of back-hops needed to get to the start.
+- Needs `DataviewJS` enabled (`Dataview` settings --> Enable JavaScript Queries).
+```dataviewjs
+const self = dv.current().file.path;
+const pages = dv.pages('"FOLDER"').where(p => p.file.path !== self);
+const depth = new Map();
+
+// Hops back through `previous` - memoized, stops on cycles and dead links
+function pos(page, seen = new Set()) {
+  const path = page.file.path;
+  if (depth.has(path)) return depth.get(path);
+  if (seen.has(path)) return 0;
+  seen.add(path);
+  const prev = [].concat(page.previous ?? [])[0];
+  const prevPage = prev && dv.page(prev.path);
+  const d = prevPage ? pos(prevPage, seen) + 1 : 0;
+  depth.set(path, d);
+  return d;
+}
+
+dv.table(
+  ["#", "Note", "Folder"],
+  pages
+    .map(p => ({ p, n: pos(p) }))
+    .sort(x => x.n)
+    .map(({ p, n }) => [n, p.file.link, p.file.folder])
+);
+```
+
+*Best with `cssclasses: [cards-column]` in the note's frontmatter (optional). Replace `FOLDER` with the folder to list.*
