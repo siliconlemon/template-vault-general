@@ -8,6 +8,6 @@ cssclasses:
 TABLE WITHOUT ID 
 	file.link AS "Note"
 FROM ""
-WHERE contains(parent, this.file.link)
+WHERE parent AND contains(parent, this.file.link)
 SORT file.name ASC
 ```

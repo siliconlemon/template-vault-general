@@ -220,7 +220,7 @@ xychart-beta
 ```dataview
 LIST
 FROM ""
-WHERE contains(parent, this.file.link)
+WHERE parent AND contains(parent, this.file.link)
 SORT file.name ASC
 ```
 
@@ -230,7 +230,7 @@ TABLE WITHOUT ID
 	file.link AS "Note",
 	join(filter(file.tags, (t) => contains(list("#todo", "#open", "#review", "#closed", "#skipped", "#suggestion"), t))) AS "Status"
 FROM ""
-WHERE contains(parent, this.file.link)
+WHERE parent AND contains(parent, this.file.link)
 SORT file.name ASC
 ```
 

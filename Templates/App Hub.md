@@ -13,7 +13,7 @@ cssclasses:
 TABLE WITHOUT ID 
 	file.link AS "Note"
 FROM ""
-WHERE contains(parent, this.file.link)
+WHERE parent AND contains(parent, this.file.link)
 AND !contains(file.etags, "#BUG")
 AND !contains(file.etags, "#FEAT")
 AND !contains(file.etags, "#REFACT")
@@ -27,7 +27,7 @@ TABLE WITHOUT ID
 	file.link AS "Note",
 	join(filter(file.tags, (t) => contains(list("#open", "#closed", "#Open", "#Closed"), t))) AS "Status"
 FROM ""
-WHERE contains(parent, this.file.link)
+WHERE parent AND contains(parent, this.file.link)
 AND (
   contains(file.etags, "#BUG") OR
   contains(file.etags, "#FEAT") OR
