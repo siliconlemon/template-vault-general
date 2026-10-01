@@ -1,10 +1,10 @@
 :root,
 body {
   /* Obsidian Core readable line width */
-  --file-line-width: 66rem;
+  --file-line-width: 69rem;
 
   /* Theme-specific line width variables (Things theme, Minimal, etc.) */
-  --line-width: 66rem;
+  --line-width: 69rem;
   --line-width-adaptive: var(--line-width);
   --line-width-wide: calc(var(--line-width) + 12.5%);
 }
