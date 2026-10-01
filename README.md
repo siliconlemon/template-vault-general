@@ -21,6 +21,7 @@ A template vault for Obsidian made with general-purpose SW DEV notetaking in min
 > 5. Create project folders at the vault root (see `Sample Project/` for an example), create a `<Name> - HUB.md` note using the `Project Hub` or `App Hub` template, and bookmark it for quick access.
 > 6. See [[Templates - HUB]] for note templates and [[Examples]] for markdown, diagram, and `Dataview` syntax.
 
+
 > [!INFO] Centralized task tracking
 > - See [[Tasks]] for a unified view of all open checkboxes marked with `#todo`, `#review`, or `#suggestion` across the entire vault.
 > - Check the box in any note or within `Tasks.md` to automatically resolve and update both.
