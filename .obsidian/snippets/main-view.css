@@ -12,5 +12,6 @@ body {
 /* Ensure width applies cleanly in both Live Preview / Source and Reading views */
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
-  max-width: var(--file-line-width);
+  /* Centered, at least 30px from each side */
+  max-width: min(var(--file-line-width), calc(100% - 60px));
 }
