@@ -20,7 +20,7 @@
   "bannerHeightPopover": 100,
   "bannerMargin": 0,
   "bannerMarginMobile": 0,
-  "bannerFading": true,
+  "bannerFading": false,
   "coverDefaultWidth1": 200,
   "coverDefaultWidth2": 250,
   "coverDefaultWidth3": 300,
