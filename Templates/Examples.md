@@ -7,28 +7,31 @@ cssclasses:
 ---
 ## Callouts
 
-> [!NOTE] Note title
+> [!NOTE] Note
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-> [!INFO] Info title
+> [!INFO] Info
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-> [!IMPORTANT] Important title
+> [!IMPORTANT] Important
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-> [!SUMMARY] Summary title
+> [!SUMMARY] Summary
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-> [!WARNING] Warning title
+> [!QUESTION] Question
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-> [!QUESTION] Question title
+> [!WARNING] Warning
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-> [!SUCCESS] Success title
+> [!DANGER] Danger
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-> [!FAILURE] Failure title
+> [!SUCCESS] Success
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+> [!FAILURE] Failure
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ## Footnotes
