@@ -11,7 +11,7 @@ Miscellaneous notes, tool guides, and developer references.
 TABLE WITHOUT ID 
 	file.link AS "Note"
 FROM ""
-WHERE contains(parent, this.file.link)
+WHERE parent AND contains(parent, this.file.link)
 AND !contains(file.etags, "#BUG")
 AND !contains(file.etags, "#FEAT")
 AND !contains(file.etags, "#REFACT")
