@@ -206,6 +206,16 @@ xychart-beta
     bar [2.6, 29, 8, 47]
 ```
 
+- Sync duration grows with item count and jumps once paging kicks in past 500 items.
+
+```mermaid
+xychart-beta
+    title "Sync duration (s) by item count"
+    x-axis "items" [100, 200, 300, 400, 500, 600, 700]
+    y-axis "Duration [s]" 0 --> 12
+    line [0.8, 1.5, 2.2, 3.0, 3.7, 7.9, 9.4]
+```
+
 ## Children as list
 ```dataview
 LIST
