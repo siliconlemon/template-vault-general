@@ -1,0 +1,58 @@
+{
+  "toc": {
+    "show": true,
+    "alwaysExpand": false,
+    "renderInAllVisibleViews": false,
+    "width": 260,
+    "position": "left",
+    "offset": 18,
+    "offsetY": 0,
+    "indicatorMode": "dot"
+  },
+  "render": {
+    "useHeadingNumber": false,
+    "numberingStartIndex": 1,
+    "skipHeadingLevels": [],
+    "renderMarkdown": false,
+    "showWhenSingleHeading": false,
+    "hideHeadingNumberBlacklist": [],
+    "enableDragSort": false
+  },
+  "tool": {
+    "useToolbar": false,
+    "toolbarAlwaysShow": false,
+    "showProgressBar": false,
+    "showProgressCircle": false,
+    "toolbarButtons": {
+      "pinTOC": false,
+      "changePosition": true,
+      "expandCollapse": true,
+      "leftOffset": false,
+      "rightOffset": false,
+      "upOffset": false,
+      "downOffset": false,
+      "locateActiveHeading": true,
+      "copyTOC": true
+    },
+    "returnToCursor": {
+      "enabled": true,
+      "icon": "text-cursor-input"
+    },
+    "returnToTop": {
+      "enabled": true,
+      "icon": "arrow-up-to-line"
+    },
+    "returnToBottom": {
+      "enabled": false,
+      "icon": "arrow-down-to-line"
+    },
+    "jumpToNextHeading": {
+      "enabled": false,
+      "icon": "corner-right-down"
+    },
+    "jumpToPrevHeading": {
+      "enabled": false,
+      "icon": "corner-left-up"
+    }
+  }
+}
