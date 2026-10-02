@@ -76,11 +76,11 @@ LIMIT 12
 
 ## Activity
 
-Activity over the last 180 days.
+Activity over the last 150 days.
 
 ```contributionGraph
 graphType: calendar
-dateRangeValue: 180
+dateRangeValue: 150
 dateRangeType: LATEST_DAYS
 startOfWeek: 0
 showCellRuleIndicators: false
@@ -106,6 +106,4 @@ cellStyleRules: []
 ## License
 
 Vault content (notes, templates, and CSS snippets) is licensed under the [MIT License](LICENSE).
-
 Bundled community plugins, the `Things` theme, and the images in `Pictures/` are third-party work under their own licenses. 
-See [NOTICE](NOTICE) for attribution.
