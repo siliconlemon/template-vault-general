@@ -79,7 +79,7 @@ LIMIT 12
 Activity over the last 180 days.
 
 ```contributionGraph
-graphType: default
+graphType: calendar
 dateRangeValue: 180
 dateRangeType: LATEST_DAYS
 startOfWeek: 0
@@ -98,6 +98,7 @@ cellStyle:
   minWidth: 33px
   minHeight: 33px
 cellStyleRules: []
+
 ```
 
 ---
