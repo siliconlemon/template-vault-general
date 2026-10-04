@@ -76,7 +76,7 @@ LIMIT 12
 
 ## Activity
 
-Activity over the last 150 days.
+Activity over the last 6 months.
 
 ```contributionGraph
 graphType: calendar
