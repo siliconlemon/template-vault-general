@@ -15,6 +15,11 @@ https://github.com/sponsors/kepano
   padding-top: calc(var(--cards-padding)/2) !important;
 }
 
+/* When first cell is text-only, restore normal sizing on subsequent cells */
+.cards table.dataview tbody > tr:not(:has(> td:first-child a, > td:first-child img)) > td:not(:first-child) {
+  font-size: inherit;
+}
+
 :root {
   --cards-min-width: 180px;
   --cards-max-width: 260px;
@@ -46,7 +51,7 @@ https://github.com/sponsors/kepano
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding: 0 0 calc(var(--cards-padding)/3) 0;
+  padding: calc(var(--cards-padding)/6) 0 calc(var(--cards-padding)/2.2) 0;
   border-radius: 6px;
   overflow: hidden;
   transition: box-shadow 0.15s linear;
@@ -58,7 +63,7 @@ https://github.com/sponsors/kepano
 .cards table.dataview tbody > tr > td:first-child {
     font-weight: var(--bold-weight); }
   .cards table.dataview tbody > tr > td:first-child a {
-    padding: 0 0 calc(var(--cards-padding)/3);
+    padding: 0 0 calc(var(--cards-padding)/6);
     display: block; }
   .cards table.dataview tbody > tr > td:not(:first-child) {
     font-size: 90%;

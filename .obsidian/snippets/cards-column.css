@@ -35,7 +35,7 @@ cssclasses:
   flex-direction: column;
   max-width: var(--cc-max-width);
   margin: 0;
-  padding: 0 0 calc(var(--cc-padding)/3) 0;
+  padding: calc(var(--cc-padding)/4) 0 calc(var(--cc-padding)/3) 0;
   background-color: var(--background-primary) !important;
   border: var(--cc-border-width) solid var(--background-modifier-border);
   border-radius: 6px;
@@ -88,14 +88,16 @@ cssclasses:
 .cards-column table.dataview.table-view-table > tbody > tr:not(:has(> td:first-child a, > td:first-child img)) {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
+  align-items: baseline;
   column-gap: calc(var(--cc-padding)*0.75);
-  padding: calc(var(--cc-padding)/6) calc(var(--cc-padding)/2) calc(var(--cc-padding)/3);
+  padding: calc(var(--cc-padding)/3) calc(var(--cc-padding)/2) calc(var(--cc-padding)/3);
 }
 
 .cards-column table.dataview.table-view-table > tbody > tr:not(:has(> td:first-child a, > td:first-child img)) > td {
   grid-column: 2;
   width: auto;
   margin: 0;
+  font-size: inherit;
 }
 
 /* Top padding matches the title's so both share a baseline */
