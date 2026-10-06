@@ -6,6 +6,8 @@
 
   --callout-title-padding-top: 2px;
   --callout-title-padding-bottom: 0px;
+  --callout-title-icon-gap: 8px;
+  --callout-title-icon-offset: 0.8px;
 
   --callout-content-padding-top: 0px;
   --callout-content-padding-bottom: 0px;
@@ -21,9 +23,14 @@
 .callout-title {
   padding-top: var(--callout-title-padding-top);
   padding-bottom: var(--callout-title-padding-bottom);
+  gap: var(--callout-title-icon-gap);
 }
 
 .callout-content {
   padding-top: var(--callout-content-padding-top);
   padding-bottom: var(--callout-content-padding-bottom);
+}
+
+.callout-icon {
+  transform: translateY(var(--callout-title-icon-offset));
 }
