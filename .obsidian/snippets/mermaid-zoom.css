@@ -284,6 +284,12 @@
 	color: #000000 !important;
 }
 
+/* Message labels (messageText-bg). SVG <text> can't take a CSS background, so an
+   inline SVG filter paints the same rounded #eae7ec99 pill as flowchart edge labels. */
+.mermaid-zoom-modal-wrapper text.messageText {
+	filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='b' x='-0.06' y='-0.2' width='1.12' height='1.4' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-color='%23eae7ec'/%3E%3CfeGaussianBlur stdDeviation='2'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='8' intercept='-3.5'/%3E%3C/feComponentTransfer%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.6'/%3E%3C/feComponentTransfer%3E%3CfeMerge%3E%3CfeMergeNode/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/svg%3E#b") !important;
+}
+
 /* Sequence numbers (autonumber bubbles) */
 .mermaid-zoom-modal-wrapper text.sequenceNumber,
 .mermaid-zoom-modal-wrapper text.sequenceNumber tspan,
