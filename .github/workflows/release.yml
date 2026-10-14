@@ -66,10 +66,16 @@ jobs:
           } > "$RUNNER_TEMP/release/notes.md"
           cat "$RUNNER_TEMP/release/notes.md" >> "$GITHUB_STEP_SUMMARY"
 
+      # a force-moved tag runs this again, so refresh the existing release instead of failing
       - name: Publish
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
-          gh release create "$TAG" "$RUNNER_TEMP/release"/*.zip \
-            --repo "$GITHUB_REPOSITORY" --verify-tag --title "${GITHUB_REPOSITORY#*/} $TAG" \
-            --notes-file "$RUNNER_TEMP/release/notes.md"
+          out="$RUNNER_TEMP/release"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$out"/*.zip --clobber
+            gh release edit "$TAG" --notes-file "$out/notes.md"
+          else
+            gh release create "$TAG" "$out"/*.zip --verify-tag               --title "${GITHUB_REPOSITORY#*/} $TAG" --notes-file "$out/notes.md"
+          fi
