@@ -21,7 +21,6 @@ jobs:
       contents: write
     env:
       TAG: ${{ github.ref_name }}
-      OUT: ${{ runner.temp }}/release
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -39,8 +38,8 @@ jobs:
       - name: Vault zip
         run: |
           name="${GITHUB_REPOSITORY#*/}"
-          mkdir -p "$OUT"
-          git archive --format=zip --prefix="$name/" -o "$OUT/$name-$TAG.zip" "$TAG"
+          mkdir -p "$RUNNER_TEMP/release"
+          git archive --format=zip --prefix="$name/" -o "$RUNNER_TEMP/release/$name-$TAG.zip" "$TAG"
 
       - name: Notes
         working-directory: .obsidian
@@ -65,13 +64,13 @@ jobs:
               themes/*/manifest.json
             echo
             jq -r '"**CSS snippets:** " + (.enabledCssSnippets | sort | map("`\(.)`") | join(", "))' appearance.json
-          } > "$OUT/notes.md"
-          cat "$OUT/notes.md" >> "$GITHUB_STEP_SUMMARY"
+          } > "$RUNNER_TEMP/release/notes.md"
+          cat "$RUNNER_TEMP/release/notes.md" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Publish
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$TAG" "$OUT"/*.zip \
+          gh release create "$TAG" "$RUNNER_TEMP/release"/*.zip \
             --repo "$GITHUB_REPOSITORY" --verify-tag --title "${GITHUB_REPOSITORY#*/} $TAG" \
-            --notes-file "$OUT/notes.md"
+            --notes-file "$RUNNER_TEMP/release/notes.md"
