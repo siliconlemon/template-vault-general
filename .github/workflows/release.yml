@@ -24,8 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          fetch-depth: 0
-          persist-credentials: false
+          fetch-depth: 0 # the tag must be on main, a private repo needs the token kept for the tag fetch
 
       - name: Tag is on main
         run: git merge-base --is-ancestor "$GITHUB_SHA" origin/main
