@@ -1,0 +1,77 @@
+# An annotated vX.Y.Z tag on main publishes a GitHub release: the vault as a zip that opens straight in Obsidian,
+# notes that open with the tag message, then the plugins, themes and CSS snippets read from .obsidian.
+# Everything is bash and jq, so nothing needs updating when a plugin is added or bumped.
+name: Release
+
+on:
+  push:
+    tags: ["v[0-9]+.[0-9]+.[0-9]+"]
+
+permissions: {}
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    env:
+      TAG: ${{ github.ref_name }}
+      OUT: ${{ runner.temp }}/release
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Tag is on main
+        run: git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+
+      # checkout leaves the pushed tag lightweight, fetch the annotated one for its message
+      - name: Annotated tag
+        run: git fetch --force origin "refs/tags/$TAG:refs/tags/$TAG"
+
+      # git archive takes tracked files only, so local workspace state never ships
+      - name: Vault zip
+        run: |
+          name="${GITHUB_REPOSITORY#*/}"
+          mkdir -p "$OUT"
+          git archive --format=zip --prefix="$name/" -o "$OUT/$name-$TAG.zip" "$TAG"
+
+      - name: Notes
+        working-directory: .obsidian
+        run: |
+          {
+            git tag -l --format='%(contents)' "$TAG" | sed '/^-----BEGIN/,$d'
+            echo
+            echo "**Plugins:**"
+            echo
+            echo "| Plugin | Version | Author |"
+            echo "| --- | --- | --- |"
+            jq -r '.[]' community-plugins.json | while read -r id; do
+              jq -r --arg id "$id" \
+                '"| [\(.name)](https://obsidian.md/plugins?id=\($id)) | \(.version) | \(.author | sub(" *<.*>"; "")) |"' \
+                "plugins/$id/manifest.json"
+            done | sort -f
+            echo
+
+            active=$(jq -r '.cssTheme // ""' appearance.json)
+            jq -rn --arg active "$active" \
+              '"**Theme:** " + ([inputs | "\(.name) \(.version)" + (if .name == $active then " (active)" else "" end)] | join(" · "))' \
+              themes/*/manifest.json
+            echo
+            jq -r '"**CSS snippets:** " + (.enabledCssSnippets | sort | map("`\(.)`") | join(", "))' appearance.json
+          } > "$OUT/notes.md"
+          cat "$OUT/notes.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$TAG" "$OUT"/*.zip \
+            --repo "$GITHUB_REPOSITORY" --verify-tag --title "${GITHUB_REPOSITORY#*/} $TAG" \
+            --notes-file "$OUT/notes.md"
