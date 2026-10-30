@@ -260,6 +260,12 @@
 	fill: #f0e0fb !important;
 }
 
+/* Alt, loop, opt and par frame borders */
+.mermaid-zoom-modal-wrapper .loopLine {
+	stroke-width: 1.5px !important;
+	stroke: #600099 !important;
+}
+
 .mermaid-zoom-modal-wrapper .actor-line,
 .mermaid-zoom-modal-wrapper .messageLine0,
 .mermaid-zoom-modal-wrapper .messageLine1 {

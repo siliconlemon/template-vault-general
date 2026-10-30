@@ -249,6 +249,12 @@
 	fill: #f0e0fb !important;
 }
 
+/* Alt, loop, opt and par frame borders */
+.mermaid .loopLine {
+	stroke-width: 1.5px !important;
+	stroke: #600099 !important;
+}
+
 .mermaid .actor-line,
 .mermaid .messageLine0,
 .mermaid .messageLine1 {
