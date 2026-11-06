@@ -23,6 +23,13 @@
 .theme-dark .mermaid-zoom-modal-wrapper svg {
 	filter: invert(1) hue-rotate(180deg) !important;
 }
+/* pele (Obsidian 1.15+) already renders in the active theme's colors, so the
+   invert above (and the plugin's own) would flip a dark diagram back to light
+   and hide its edges. Only mermaid.js output (no .pele class) gets inverted. */
+.theme-dark .mermaid-zoom-modal-wrapper svg.pele {
+	filter: none !important;
+}
+
 
 /* --------------------------------------------------------------------------
    2. Font weight across all diagram text

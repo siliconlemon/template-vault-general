@@ -1,3 +1,26 @@
+/* Obsidian 1.15+ renders mermaid with its own engine (pele) instead of
+   mermaid.js. pele emits none of the mermaid.js classes styled below, does not
+   get Obsidian's dark-mode invert, and takes its colors from --mermaid-*
+   variables. Setting them on body covers inline blocks and the cloned svg in
+   the mermaid-zoom modal alike. Dark values are the light palette passed
+   through invert(1) hue-rotate(180deg), matching the old dark look. The
+   class-based rules below stay for machines still on mermaid.js. */
+body.theme-light {
+	--mermaid-surface: #bcb0e8;
+	--mermaid-surface-alt: #e4dff5;
+	--mermaid-border-color: #280cb6;
+	--mermaid-text-color: #000000;
+	--mermaid-line-color: #000000;
+}
+
+body.theme-dark {
+	--mermaid-surface: #4e427a;
+	--mermaid-surface-alt: #201b31;
+	--mermaid-border-color: #ebcfff;
+	--mermaid-text-color: #ffffff;
+	--mermaid-line-color: #ffffff;
+}
+
 :root {
 	/* Size diagrams by HEIGHT, not width. A fixed width cap shrinks wide
 	   (LR) flowcharts in both dimensions until they are an unreadable strip;
