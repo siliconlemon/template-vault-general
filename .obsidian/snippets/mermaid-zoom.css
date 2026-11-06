@@ -525,3 +525,149 @@
 	stroke: #280cb6 !important;
 	stroke-width: 2px !important;
 }
+
+/* --------------------------------------------------------------------------
+   12. Obsidian's own pele zoom control (Obsidian 1.15+)
+   pele adds its own + / - / reset cluster (div.pele-zoom) at the block's
+   top-right, left of the edit-block button. Its styles are inline, hence
+   !important. display is left alone: pele toggles it inline.
+
+   pele also watches the block with a ResizeObserver and resets the svg size
+   on every resize, which undoes the plugin's inline zoom (+ / - / fit /
+   lock do nothing). So on pele blocks the plugin keeps only its fullscreen
+   button, moved into the same top row:  [reset] [+] [-] [fullscreen] [</>]
+
+   All of the row looks and behaves like Obsidian's edit-block button
+   (.embed-action): no background, shown only while the block is hovered,
+   a hover background only on the button under the pointer. Every button in
+   the row, the edit-block button included, is a --mz-btn square.
+   -------------------------------------------------------------------------- */
+body {
+	--mz-btn: 24px;
+	/* Hover background, stronger than Obsidian's --background-modifier-hover
+	   (0.075). --mono-rgb-100 is black in light mode, white in dark. */
+	--mz-hover-bg: rgba(var(--mono-rgb-100), 0.15);
+	/* Icon on the hovered button at full contrast: black in light mode,
+	   white in dark. At rest the icons keep Obsidian's embed-action color. */
+	--mz-icon-hover: rgb(var(--mono-rgb-100));
+}
+
+.mermaid:has(> svg.pele) {
+	--mz-row-right: var(--size-2-2);
+	--pele-zoom-top: var(--size-2-2);
+	--pele-zoom-right: calc(var(--mz-row-right) + var(--mz-btn) + var(--size-2-1));
+	/* Strip above the diagram so the row never covers nodes. */
+	padding-top: calc(var(--mz-btn) + 2 * var(--size-2-2));
+}
+
+/* Live Preview: the edit-block button sits at the right edge (Obsidian puts
+   it at var(--size-2-2)); the row continues to its left, set a bit further
+   apart (--mz-edit-gap) than the zoom buttons are from each other. */
+.markdown-source-view.mod-cm6 .cm-preview-code-block .mermaid:has(> svg.pele) {
+	--mz-edit-gap: 10px;
+	--mz-row-right: calc(var(--size-2-2) + var(--mz-btn) + var(--mz-edit-gap));
+	--pele-zoom-top: var(--size-2-2);
+	--pele-zoom-right: calc(var(--mz-row-right) + var(--mz-btn) + var(--size-2-1));
+}
+
+.mermaid.mermaid-zoom-ready:has(> svg.pele) {
+	padding-bottom: 0;
+}
+
+.mermaid:has(> svg.pele) .mermaid-zoom-inline-zoom-btn {
+	display: none !important;
+}
+
+.mermaid:has(> svg.pele) > .mermaid-zoom-inline-controls {
+	top: var(--size-2-2);
+	bottom: auto;
+	right: var(--mz-row-right);
+	gap: var(--size-2-1);
+}
+
+.mermaid .pele-zoom {
+	flex-direction: row !important;
+	align-items: center !important;
+	gap: var(--size-2-1) !important;
+	padding: 0 !important;
+	border: none !important;
+	background: transparent !important;
+	line-height: normal !important;
+	z-index: 100;
+}
+
+/* Reset shows up only while zoomed. Putting it first means it grows the row
+   to the left and + / - stay where they are. */
+.mermaid .pele-zoom .pele-zoom-reset {
+	order: -1;
+}
+
+/* Hidden until the block is hovered, like the edit-block button. Devices
+   without hover keep the row visible. */
+@media (hover: hover) {
+	.mermaid .pele-zoom button,
+	.mermaid:has(> svg.pele) > .mermaid-zoom-inline-controls {
+		opacity: 0 !important;
+		transition: opacity 0.07s ease-out;
+	}
+
+	:is(.mermaid:hover, .cm-embed-block:hover .mermaid) .pele-zoom button,
+	:is(.mermaid:hover, .cm-embed-block:hover .mermaid):has(> svg.pele) > .mermaid-zoom-inline-controls {
+		opacity: 1 !important;
+	}
+}
+
+/* Buttons: the look of .embed-action, as squares. The edit-block button of
+   mermaid blocks gets the same square so the whole row lines up. */
+.mermaid .pele-zoom button,
+.mermaid:has(> svg.pele) .mermaid-zoom-inline-controls .mermaid-zoom-icon-btn,
+.markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) .edit-block-button {
+	display: flex;
+	align-items: center !important;
+	justify-content: center !important;
+	box-sizing: border-box !important;
+	width: var(--mz-btn) !important;
+	height: var(--mz-btn) !important;
+	padding: 0 !important;
+	border: none !important;
+	border-radius: var(--embed-action-radius, var(--radius-s)) !important;
+	background: transparent !important;
+	box-shadow: none !important;
+	color: var(--embed-action-color, var(--icon-color)) !important;
+}
+
+.mermaid .pele-zoom button:not(:disabled):hover,
+.mermaid:has(> svg.pele) .mermaid-zoom-inline-controls .mermaid-zoom-icon-btn:hover,
+.markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) .edit-block-button:hover {
+	background-color: var(--mz-hover-bg) !important;
+	color: var(--mz-icon-hover) !important;
+}
+
+.mermaid .pele-zoom button:not(:disabled):hover svg,
+.mermaid:has(> svg.pele) .mermaid-zoom-inline-controls .mermaid-zoom-icon-btn:hover svg,
+.markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) .edit-block-button:hover svg {
+	opacity: 1;
+}
+
+/* Icons the size of the edit-block icon. */
+.mermaid .pele-zoom button svg,
+.mermaid:has(> svg.pele) .mermaid-zoom-inline-controls .mermaid-zoom-icon-btn svg,
+.markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) .edit-block-button svg {
+	width: var(--icon-s, 16px) !important;
+	height: var(--icon-s, 16px) !important;
+	/* Same resting opacity Obsidian gives the edit-block glyph. */
+	opacity: var(--icon-opacity, 1);
+}
+
+/* The plugin draws its fullscreen icon itself on a 16-unit viewBox with
+   stroke-width 1 (1px at 16px). The other icons use 2 on a 24-unit viewBox,
+   about 1.33px; match that. */
+.mermaid:has(> svg.pele) .mermaid-zoom-fullscreen-btn svg {
+	stroke-width: 1.33;
+}
+
+/* pele fades a disabled button as a whole (inline opacity 0.35); fade only
+   the glyph instead. */
+.mermaid .pele-zoom button:disabled svg {
+	opacity: 0.35;
+}
