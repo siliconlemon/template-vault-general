@@ -106,14 +106,22 @@ Pair a short diagram (1-3 word node labels) with the fuller bulleted description
 
 ### Flowchart - decision or process flow
 
-- Login checks the password: correct goes to Home, wrong goes to Error.
+- `GET /profile` returns 200: the body is deserialized and the profile renders.
+- 401 after the access token expires: the buggy version deserializes the empty body and throws `NullReferenceException`, the fix refreshes the token and retries the request.
+- Tint the failing path red and the working paths green, nodes and arrows. `linkStyle` counts arrows in the order they are written, from 0.
 
 ```mermaid
 flowchart LR
-    Start([Start]) --> Login[Login]
-    Login --> Check{Correct?}
-    Check -- yes --> Home([Home])
-    Check -- no --> Error([Error])
+    Req([GET /profile]) --> Status{HTTP status}
+    Status -- 200 --> Parse[Deserialize] --> Show([Render profile])
+    Status -- "401, bug" --> Crash([NullReferenceException])
+    Status -- "401, fix" --> Refresh[Refresh token] --> Retry([Retry request])
+    classDef bad fill:#5a2630,stroke:#e5606e,color:#fff
+    classDef good fill:#24503a,stroke:#5cc489,color:#fff
+    class Crash bad
+    class Parse,Show,Refresh,Retry good
+    linkStyle 3 stroke:#e5606e,stroke-width:2px
+    linkStyle 1,2,4,5 stroke:#5cc489,stroke-width:2px
 ```
 
 ### Sequence diagram - interaction between parties over time
