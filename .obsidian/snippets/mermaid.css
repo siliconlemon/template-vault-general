@@ -52,6 +52,13 @@ body.theme-dark {
 	max-height: var(--mermaid-max-height);
 }
 
+/* Obsidian's own in-note zoom pins the svg to the block's height via inline
+   styles and clears max-width but not max-height. The cap above then shrinks
+   the block and Obsidian resets the zoom, so lift the cap while zoomed. */
+.mermaid > svg.pele[style*="max-width: none"] {
+	max-height: none;
+}
+
 /* Increase font weight across all diagram text for better antialiasing/contrast */
 .mermaid text,
 .mermaid tspan,
