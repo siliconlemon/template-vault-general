@@ -7,7 +7,7 @@ tags:
 
 Centralized view of all open `#todo`, `#review`, and `#suggestion` checkboxes across the vault, used for delayed revisits and peer reviews. 
 All tags are hidden from the views below for better readability, but the respective tag is required for this to work.
-The tags purposefully overlap with those displayed in card views, so that another tag can appear alongside `#review` or `#closed`.
+The tags purposefully overlap with those displayed in card views, so that another tag can appear alongside `#review` or `#done`.
 This way, leftover tasks won't get forgotten.
 
 * **To add an item:** Add `- [ ] #todo <note>` / `- [ ] #review <note>` / `- [ ] #suggestion <note>` anywhere in any file.

@@ -5,7 +5,7 @@ tags:
   - iOS
   - Android
   - Open
-  - Closed
+  - Done
 wiki:
 ---
 ## Expected behavior

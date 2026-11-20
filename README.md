@@ -38,7 +38,7 @@ Each child or issue note uses status tags to indicate state and surface in card 
 | Tag      | Meaning                                     |
 | -------- | ------------------------------------------- |
 | #open    | Active task, open issue, or ongoing work.   |
-| #closed  | Finished, resolved, or reviewed.            |
+| #done    | Finished, resolved, or reviewed.            |
 | #todo    | Yet to be started (used in notes or tasks). |
 | #review  | Awaits human or peer review.                |
 | #skipped | Deliberately deferred or dropped.           |

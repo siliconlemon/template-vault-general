@@ -30,7 +30,7 @@
         "luminance_offset": 0.15
       },
       {
-        "tag_name": "closed",
+        "tag_name": "done",
         "color": {
           "r": 255,
           "g": 255,

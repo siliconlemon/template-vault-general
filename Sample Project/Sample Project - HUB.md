@@ -26,7 +26,7 @@ SORT file.name ASC
 ```dataview
 TABLE WITHOUT ID 
 	file.link AS "Note",
-	join(filter(file.tags, (t) => contains(list("#open", "#closed", "#Open", "#Closed"), t))) AS "Status"
+	join(filter(file.tags, (t) => contains(list("#open", "#done", "#Open", "#Done"), t))) AS "Status"
 FROM ""
 WHERE parent AND contains(parent, this.file.link)
 AND (

@@ -236,7 +236,7 @@ SORT file.name ASC
 ```dataview
 TABLE WITHOUT ID 
 	file.link AS "Note",
-	join(filter(file.tags, (t) => contains(list("#todo", "#open", "#review", "#closed", "#skipped", "#suggestion"), t))) AS "Status"
+	join(filter(file.tags, (t) => contains(list("#todo", "#open", "#review", "#done", "#skipped", "#suggestion"), t))) AS "Status"
 FROM ""
 WHERE parent AND contains(parent, this.file.link)
 SORT file.name ASC
