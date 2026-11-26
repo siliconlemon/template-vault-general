@@ -683,3 +683,16 @@ body.theme-light .mermaid-zoom-modal-wrapper .pele-section > rect {
 body.theme-dark .mermaid-zoom-modal-wrapper .pele-section > rect {
 	fill: #372e55;
 }
+
+/* pele journey score rows 1-5 (svg.pele-journey path.pele-grid) are
+   stroked with surface-alt and vanish on the page. Give them a subtle
+   violet so each score level is easy to follow. */
+body.theme-light .mermaid-zoom-modal-wrapper svg.pele-journey .pele-grid {
+	stroke: #cfc6ee;
+	stroke-width: 1px;
+}
+
+body.theme-dark .mermaid-zoom-modal-wrapper svg.pele-journey .pele-grid {
+	stroke: #3d3463;
+	stroke-width: 1px;
+}

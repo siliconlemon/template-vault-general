@@ -57,6 +57,19 @@ body.theme-dark .pele-section > rect {
 	fill: #372e55;
 }
 
+/* pele journey score rows 1-5 (svg.pele-journey path.pele-grid) are
+   stroked with surface-alt and vanish on the page. Give them a subtle
+   violet so each score level is easy to follow. */
+body.theme-light svg.pele-journey .pele-grid {
+	stroke: #cfc6ee;
+	stroke-width: 1px;
+}
+
+body.theme-dark svg.pele-journey .pele-grid {
+	stroke: #3d3463;
+	stroke-width: 1px;
+}
+
 :root {
 	/* Size diagrams by HEIGHT, not width. A fixed width cap shrinks wide
 	   (LR) flowcharts in both dimensions until they are an unreadable strip;
