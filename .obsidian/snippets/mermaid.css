@@ -58,16 +58,21 @@ body.theme-dark .pele-section > rect {
 }
 
 /* pele journey score rows 1-5 (svg.pele-journey path.pele-grid) are
-   stroked with surface-alt and vanish on the page. Give them a subtle
-   violet so each score level is easy to follow. */
+   stroked with surface-alt and vanish on the page. Give them the section
+   header violet so each score level is easy to follow, and move the score
+   numbers left so they don't touch the rows. */
 body.theme-light svg.pele-journey .pele-grid {
-	stroke: #cfc6ee;
+	stroke: #d0c7ee;
 	stroke-width: 1px;
 }
 
 body.theme-dark svg.pele-journey .pele-grid {
-	stroke: #3d3463;
+	stroke: #372e55;
 	stroke-width: 1px;
+}
+
+svg.pele-journey .pele-scale {
+	transform: translateX(-6px);
 }
 
 :root {
