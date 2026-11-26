@@ -224,6 +224,17 @@ xychart-beta
     line [0.8, 1.5, 2.2, 3.0, 3.7, 7.9, 9.4]
 ```
 
+- Sorted bars with a budget line: app and sync are over the limit of 20, the rest fits.
+
+```mermaid
+xychart-beta
+    title "Warnings per module vs. budget"
+    x-axis ["app", "sync", "auth", "media", "ui"]
+    y-axis "warnings" 0 --> 60
+    bar [52, 34, 21, 12, 5]
+    line [20, 20, 20, 20, 20]
+```
+
 ## Children as list
 ```dataview
 LIST
