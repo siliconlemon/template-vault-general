@@ -671,3 +671,15 @@ body {
 .mermaid .pele-zoom button:disabled svg {
 	opacity: 0.35;
 }
+
+/* pele journey section headers (g.pele-section > rect, filled with
+   --mermaid-surface-alt) read too dark next to the task boxes. Lift them
+   halfway towards --mermaid-surface here only, because surface-alt also
+   fills subgraphs, notes and grid lines. */
+body.theme-light .mermaid-zoom-modal-wrapper .pele-section > rect {
+	fill: #d0c7ee;
+}
+
+body.theme-dark .mermaid-zoom-modal-wrapper .pele-section > rect {
+	fill: #372e55;
+}

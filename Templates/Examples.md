@@ -181,14 +181,19 @@ classDiagram
 
 ### User journey - user-facing steps and satisfaction
 
-- User opens the app, struggles with Login, succeeds at Checkout.
+- First launch on a new phone: install and splash are smooth, login with 2FA hurts, the first sync is slow, the first push lands fine.
 
 ```mermaid
 journey
-    title Shopping
-    section Session
-      Login: 2: User
-      Checkout: 5: User
+    title First launch on a new phone
+    section Install
+      Store download: 5: User
+      Splash screen: 4: User
+    section Sign in
+      Login + 2FA: 2: User
+      Initial sync: 3: User
+    section First use
+      Push notification: 5: User
 ```
 
 ### Pie chart - proportion or share breakdown
