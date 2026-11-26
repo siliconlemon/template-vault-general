@@ -11,18 +11,6 @@ body.theme-light {
 	--mermaid-border-color: #280cb6;
 	--mermaid-text-color: #000000;
 	--mermaid-line-color: #000000;
-	/* Chart series (pie slices, xychart bars and lines, journey actors).
-	   Pie labels inside slices take the page background colour, so light
-	   mode uses dark violets and dark mode light ones. Neighbours alternate
-	   in lightness so adjacent slices stay apart. */
-	--mermaid-color-1: #5a3fd0;
-	--mermaid-color-2: #2b1a8a;
-	--mermaid-color-3: #8f74e0;
-	--mermaid-color-4: #3d1fb0;
-	--mermaid-color-5: #7a5bd8;
-	--mermaid-color-6: #1f0f6e;
-	--mermaid-color-7: #6a4cd4;
-	--mermaid-color-8: #4a2fa0;
 }
 
 body.theme-dark {
@@ -31,18 +19,6 @@ body.theme-dark {
 	--mermaid-border-color: #ebcfff;
 	--mermaid-text-color: #ffffff;
 	--mermaid-line-color: #ffffff;
-	/* Chart series (pie slices, xychart bars and lines, journey actors).
-	   Pie labels inside slices take the page background colour, so light
-	   mode uses dark violets and dark mode light ones. Neighbours alternate
-	   in lightness so adjacent slices stay apart. */
-	--mermaid-color-1: #b5a3e8;
-	--mermaid-color-2: #e2d9fa;
-	--mermaid-color-3: #8f74e0;
-	--mermaid-color-4: #cfc2f2;
-	--mermaid-color-5: #a08ae4;
-	--mermaid-color-6: #efeafc;
-	--mermaid-color-7: #c2b2ee;
-	--mermaid-color-8: #9a82e2;
 }
 
 /* pele journey section headers (g.pele-section > rect, filled with
